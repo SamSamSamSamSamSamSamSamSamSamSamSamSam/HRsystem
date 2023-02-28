@@ -4,7 +4,7 @@ Fonts
 ==========
 */
 @font-face {
-  font-family: 'PT Serif';
+  font-family: "PT Serif";
   src: url(../001Font/PT_Serif/PTSerif-Regular.ttf);
 }
 
@@ -17,7 +17,7 @@ Variables
   --color-primary: rgba(3, 5, 48, 1);
   --color-secondary: rgba(223, 223, 223, 1);
   --color-font: rgba(154, 154, 154, 1);
-  --style-font: 'PT Serif', serif;
+  --style-font: "PT Serif", serif;
 }
 
 /*
