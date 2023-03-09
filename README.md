@@ -3,6 +3,7 @@
 03/09/23
 
 - Revamped the entire Human Resource Systems landing page, where changes includes :
+  - Sidebar
   - Responsiveness of the website
   - Changed of logo
   - Search bar
