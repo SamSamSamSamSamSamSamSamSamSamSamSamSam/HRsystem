@@ -91,7 +91,6 @@ Custom
   grid-template-rows: repeat(9, 1fr);
   background: var(--color-secondary);
   transform: translate(-100%);
-  transition: all 0.3s ease-in;
 }
 
 .nav-bar {
@@ -198,7 +197,6 @@ Responsive
     border: none;
     padding-top: 0rem;
     padding-left: 0rem;
-    transition: none;
   }
 }
 
