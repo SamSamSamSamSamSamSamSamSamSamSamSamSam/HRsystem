@@ -206,7 +206,6 @@ Responsive
   .nav-links {
     font-size: 1.2rem;
     gap: 1.5em;
-    transition: none;
   }
   nav {
     grid-template-columns: 0fr 8fr 4fr;
