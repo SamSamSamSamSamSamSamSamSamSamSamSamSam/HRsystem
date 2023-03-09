@@ -18,53 +18,52 @@
       crossorigin="anonymous"
     ></script>
     <!-- Boxicons -->
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
     <!-- Navigation Bar -->
     <nav>
+      <!-- Menu -->
+      <div class="menu">
+        <i class="bx bx-menu"></i>
+      </div>
       <!-- Logo -->
-      <a href="#home" class="logo">
-        <img src="../00Image/hrm-logo.png" alt="hr-logo" />
-      </a>
+      <div>
+        <a href="index.html">
+          <img src="../00Image/hrm-logo.png" alt="logo" class="hrm-logo" />
+        </a>
+      </div>
       <!-- Links -->
-      <ul class="nav-list">
-        <li>
-          <a href="#hr-resources">Human Resources Management</a>
-        </li>
-        <li>
-          <a href="#payroll">Payroll</a>
-        </li>
-        <li>
-          <a href="#time-and-attendance">Time and Attendance</a>
-        </li>
-        <li>
-          <a href="#benefits">Benefits</a>
-        </li>
-        <li>
-          <a href="#analytics">Analytics</a>
-        </li>
+      <ul class="nav-links">
+        <li><a href="">human resource system</a></li>
+        <li><a href="">payroll</a></li>
+        <li><a href="">time and attendance</a></li>
+        <li><a href="">benefits</a></li>
+        <li><a href="">analytics</a></li>
       </ul>
-      <section class="right">
-        <!-- Search -->
+      <!-- Search and Login -->
+      <div class="search-login">
         <div class="search-bar">
           <input
             type="text"
-            name="search"
-            id="search"
-            placeholder="Search for an employee..."
+            placeholder="search for an employee..."
+            class="search"
           />
-          <button class="search-icon">
-            <i class="gg-search"></i>
-          </button>
+          <button><i class="bx bx-search-alt"></i></button>
         </div>
-        <!-- Login -->
-        <a href="#sign-in" class="login"> Sign in </a>
-      </section>
+        <a href="" class="sign-in">sign in</a>
+      </div>
     </nav>
+    <!-- End of Navigation Bar -->
 
+    <!-- Content -->
     <main></main>
+    <!-- End of Content -->
+
     <!-- JavaScript -->
     <script src="index.js"></script>
   </body>
