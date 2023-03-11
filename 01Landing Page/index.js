@@ -1,3 +1,4 @@
+// Sidebar
 const toggle_button = document.querySelector(".menu");
 const close_button = document.querySelector(".close-button");
 const sidebar = document.querySelector(".sidebar");
