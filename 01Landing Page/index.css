@@ -54,7 +54,7 @@ nav {
 }
 
 a {
-  text-decoration: transparent;
+  text-decoration: none;
   color: var(--color-primary);
   text-shadow: 0rem 0.08rem 0.01rem var(--color-font);
   cursor: pointer;
@@ -113,7 +113,7 @@ Custom
 
 .top:hover {
   border-bottom-style: solid;
-  border-color: blue;
+  border-color: var(--color-primary);
 }
 
 .dropdown-menu {
@@ -209,17 +209,16 @@ Custom
   display: grid;
   grid-template-rows: 8fr 10fr;
   transition: all 0.2s ease-in-out;
-  transform: translate(-100%);
+  transform: translateX(-100%);
   font-size: 1.6rem;
-  border-top-style: solid;
-  border-right-style: solid;
-  border-top-color: var(--color-primary);
-  border-right-color: var(--color-primary);
+  border-style: solid;
+  border-color: var(--color-primary);
+  border-width: 0;
   border-bottom-right-radius: 100rem;
 }
 
 .show-sidebar {
-  transform: translate(0);
+  transform: translateX(0);
 }
 
 .sidebar-links {
@@ -235,8 +234,10 @@ Custom
 }
 
 .sidebar-login {
-  border-top-color: var(--color-primary);
-  border-top-style: solid;
+  border-color: var(--color-primary);
+  border-style: solid;
+  border-width: 0;
+  border-top-width: 1px;
   padding-top: 2rem;
   text-align: center;
 }
@@ -255,28 +256,6 @@ Custom
 .login:hover {
   border-radius: 5rem;
   font-size: 2.5rem;
-}
-
-.links-content {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 80ch;
-  background: var(--color-secondary);
-  color: var(--color-primary);
-  padding: 2rem;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 2rem;
-  margin-left: 8.38rem;
-  margin-top: 6.38rem;
-  border-top: solid black;
-  grid-template-columns: 1fr;
-  gap: 2em;
-}
-
-.links-content.active {
-  display: grid;
 }
 
 @media (min-width: 83em) {
