@@ -91,13 +91,54 @@ Custom
 }
 
 .hrm-logo:hover {
-  animation: shadow-movement 0.5s linear infinite;
+  animation: circular-movement 1.5s ease-in-out infinite;
 }
 
 .nav-links {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2em;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  position: relative;
+  margin: 0 1.25rem;
+}
+
+.nav-links li a {
+  display: block;
+  text-decoration: none;
+  padding: 1rem 0rem;
+}
+
+.top:hover {
+  border-bottom-style: solid;
+  border-color: blue;
+}
+
+.dropdown-menu {
+  display: none;
+  position: fixed;
+  background-color: var(--color-secondary);
+  min-width: 50ch;
+  z-index: 1;
+  padding: 1rem 0;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
+.dropdown-menu li {
+  margin: 1;
+}
+
+.dropdown-menu a:hover {
+  text-decoration: none;
+  padding: 1rem;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: grid;
+  gap: 0.5em;
 }
 
 .nav-links a:hover,
@@ -279,7 +320,7 @@ Custom
   }
 }
 
-@media (max-width: 76.9em) {
+@media (max-width: 76em) {
   nav {
     grid-template-columns: 1fr 1fr 2fr;
   }
@@ -303,25 +344,73 @@ Custom
   nav {
     grid-template-columns: 0fr 8fr 4fr;
   }
+  .dropdown-menu a {
+    font-size: 1rem;
+  }
 }
 
-@keyframes shadow-movement {
+@keyframes circular-movement {
   0% {
-    box-shadow: 0.1rem -0.1rem 0rem var(--color-primary);
+    transform: rotate(0deg);
+  }
+  5% {
+    transform: rotate(18deg);
+  }
+  10% {
+    transform: rotate(36deg);
+  }
+  15% {
+    transform: rotate(54deg);
   }
   20% {
-    box-shadow: 0rem -0.1rem 0rem var(--color-primary);
+    transform: rotate(72deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  30% {
+    transform: rotate(108deg);
+  }
+  35% {
+    transform: rotate(126deg);
   }
   40% {
-    box-shadow: -0.1rem -0.1rem 0rem var(--color-primary);
+    transform: rotate(144deg);
+  }
+  45% {
+    transform: rotate(162deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  55% {
+    transform: rotate(198deg);
   }
   60% {
-    box-shadow: -0.1rem 0rem 0rem var(--color-primary);
+    transform: rotate(216deg);
+  }
+  65% {
+    transform: rotate(234deg);
+  }
+  70% {
+    transform: rotate(252deg);
+  }
+  75% {
+    transform: rotate(270deg);
   }
   80% {
-    box-shadow: 0rem 0.1rem 0rem var(--color-primary);
+    transform: rotate(288deg);
+  }
+  85% {
+    transform: rotate(306deg);
+  }
+  90% {
+    transform: rotate(324deg);
+  }
+  95% {
+    transform: rotate(342deg);
   }
   100% {
-    box-shadow: 0.1rem 0.1rem 0rem var(--color-primary);
+    transform: rotate(360deg);
   }
 }
