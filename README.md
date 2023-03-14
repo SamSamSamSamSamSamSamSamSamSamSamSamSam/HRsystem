@@ -1,5 +1,9 @@
 # Human Resources Systems
 
+03/14/23
+
+- Added a new functions of the homepage such that hovering over navigation links content is now possible.
+
 03/12/23
 
 - Added new folders and subfolders into the Human Resource Systems for future use.
