@@ -14,22 +14,24 @@ toggle_button.addEventListener("click", () => {
 });
 
 // Navigation Links
-const tab_buttons = document.querySelectorAll(".tab-button");
-const navigation = document.querySelector(".nav-links");
+const list = document.getElementById("list");
 const contents = document.querySelectorAll(".links-content");
 
-navigation.addEventListener("mouseover", (e) => {
+list.addEventListener("mouseover", (e) => {
   const id = e.target.dataset.id;
-  console.log(id);
-  const element = document.getElementById(id);
   if (id) {
-    tab_buttons.forEach((button) => {
-      button.classList.remove("active");
-      e.target.classList.add("active");
+    contents.forEach((contents) => {
+      contents.classList.remove("active");
     });
-    contents.forEach((content) => {
-      content.classList.remove("active");
-    });
-    element.classList.add("active");
+    const element = document.getElementById(id);
+    if (element) {
+      element.classList.add("active");
+    }
   }
+});
+
+list.addEventListener("mouseout", () => {
+  contents.forEach((contents) => {
+    contents.classList.remove("active");
+  });
 });
