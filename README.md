@@ -1,36 +1,36 @@
 # Human Resources Systems
 
-03/14/23
+March 14, 2023
 
-- Added a new functions of the homepage such that hovering over navigation links content is now possible.
+    Added a new function to the homepage that allows hovering over navigation links to show content.
 
-03/12/23
+March 12, 2023
 
-- Added new folders and subfolders into the Human Resource Systems for future use.
-  - Login
-  - Human Resource Management
-    - Administration
-    - Human Resource Planning
-    - Recruitment
-    - Performance
-    - Employees
-  - Time and Attendance
-    - Schedule and Rota
-    - Absences and Leave
-    - Grievance Handling
-  - Payroll
-  - Benefits
-  - Analytics
+    Added new folders and subfolders into the Human Resource Systems for future use:
+        Login
+        Human Resource Management
+            Administration
+            Human Resource Planning
+            Recruitment
+            Performance
+            Employees
+        Time and Attendance
+            Schedule and Rota
+            Absences and Leave
+            Grievance Handling
+        Payroll
+        Benefits
+        Analytics
 
-03/09/23
+March 9, 2023
 
-- Revamped the entire Human Resource Systems landing page, where changes includes :
-  - Sidebar
-  - Responsiveness of the website
-  - Changed of logo
-  - Search bar
-  - Hovering of the navigation links
+    Revamped the entire Human Resource Systems landing page, including changes to:
+        Sidebar
+        Responsiveness of the website
+        Logo change
+        Search bar
+        Hovering of the navigation links
 
-02/27/23
+February 27, 2023
 
-- Initial commit of HR System File.
+    Initial commit of HR System File.
