@@ -1,0 +1,451 @@
+/* 
+ * ========================
+ * Fonts
+ * ========================
+ */
+@font-face {
+  font-family: "PT Serif";
+  src: url(../001Font/PT_Serif/PTSerif-Regular.ttf);
+}
+
+/* 
+ * ========================
+ * Variables
+ * ========================
+ */
+:root {
+  --color-primary: rgba(3, 5, 48, 1);
+  --color-secondary: rgba(223, 223, 223, 1);
+  --color-font: rgba(154, 154, 154, 1);
+  --style-font: "PT Serif", serif;
+}
+
+/* 
+ * ========================
+ * Global Styles
+ * ========================
+ */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(69deg, #02060d, var(--color-primary));
+  color: var(--color-font);
+  font-family: var(--style-font);
+  font-size: 1.3rem;
+  text-transform: capitalize;
+}
+
+nav {
+  background-color: var(--color-secondary);
+  display: grid;
+  align-items: center;
+  border-bottom-right-radius: 5rem;
+  gap: 2rem;
+  padding: 0.5rem 0.5rem 0.5rem 2rem;
+  box-shadow: 0 0 9rem rgba(223, 223, 223, 0.551);
+  transition: all 0.3s linear;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-primary);
+  text-shadow: 0 0.08rem 0.01rem var(--color-font);
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 
+ * ========================
+ * Custom
+ * ========================
+ */
+.hrm-logo {
+  width: 2.5rem;
+  min-width: 5rem;
+  min-height: 5rem;
+  height: 2.5rem;
+  border-style: double;
+  border-radius: 10rem;
+}
+
+.hrm-logo:hover {
+  animation: circular-movement 1.5s ease-in-out infinite;
+}
+
+.nav-links {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  position: relative;
+  margin: 0 1.25rem;
+}
+
+.nav-links li a {
+  display: block;
+  text-decoration: none;
+  padding: 1rem 0rem;
+}
+
+.top:hover {
+  border-bottom-style: solid;
+  border-color: var(--color-primary);
+}
+
+.dropdown-menu {
+  display: none;
+  position: fixed;
+  background-color: var(--color-secondary);
+  min-width: 50ch;
+  z-index: 1;
+  padding: 1rem 0;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
+.dropdown-menu li {
+  margin: 1;
+}
+
+.dropdown-menu a:hover {
+  text-decoration: none;
+  padding: 1rem;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: grid;
+  gap: 0.5em;
+}
+
+.nav-links a:hover,
+.search-login a:hover,
+.sidebar-links a:hover {
+  color: var(--color-font);
+  text-shadow: 0rem 0.08rem 0.01rem var(--color-primary);
+}
+
+.search-login {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1em;
+  align-items: center;
+}
+
+.search {
+  background: none;
+  border: none;
+  outline: none;
+  text-transform: capitalize;
+  padding: 0.25rem;
+  font-size: 1.25rem;
+}
+
+.search-bar {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  border-radius: 10rem;
+  border-style: solid;
+  padding: 0.8rem;
+}
+
+.search-bar:focus-within {
+  outline: auto;
+}
+
+.bx {
+  font-size: 2rem;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+.menu {
+  display: none;
+}
+
+.bx-menu:hover,
+.bx-x:hover {
+  background-color: rgba(2, 5, 60, 0.12);
+  border-radius: 1.3rem;
+  box-shadow: 0.4rem 0.2rem 2rem rgba(13, 4, 58, 0.208);
+  transition: all 0.3s linear;
+}
+
+.bx-x:hover {
+  background-color: rgba(60, 2, 2, 0.12);
+}
+
+.sidebar {
+  position: fixed;
+  top: 1;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #dfdfdf, var(--color-secondary));
+  display: grid;
+  grid-template-rows: 8fr 10fr;
+  transition: all 0.2s ease-in-out;
+  transform: translateX(-100%);
+  font-size: 1.6rem;
+  border-style: solid;
+  border-color: var(--color-primary);
+  border-width: 0;
+  border-bottom-right-radius: 100rem;
+}
+
+.show-sidebar {
+  transform: translateX(0);
+}
+
+.sidebar-links li {
+  padding: 1.5rem;
+}
+
+.sidebar-login {
+  border: 1px solid var(--color-primary);
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.login {
+  border: 0.13rem solid var(--color-primary);
+  border-radius: 1rem;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  padding: 0.5rem;
+  font-size: 2rem;
+  transition: all 0.5s ease;
+}
+
+.login:hover {
+  border-radius: 5rem;
+  font-size: 2.5rem;
+}
+
+.active {
+  font-weight: 800;
+  border-top: solid 0.15rem;
+  transition: all 0.1s ease-out;
+}
+
+.active:hover a {
+  color: var(--color-primary);
+  box-shadow: none;
+}
+
+/* 
+ * ========================
+ * Payroll Content
+ * ========================
+ */
+
+.payroll-table {
+  border-collapse: collapse;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.payroll-table thead {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+
+.payroll-table td {
+  border-bottom: 0.1rem solid var(--color-secondary);
+  padding: 2rem;
+}
+
+.employee-name,
+.leave-start-date,
+.leave-end-date,
+.leave-date {
+  text-align: center;
+}
+
+.leave-type,
+.leave-status {
+  text-transform: capitalize;
+}
+
+.status-pending {
+  color: #f0ad4e;
+}
+
+.status-approved {
+  color: #5cb85c;
+}
+
+.status-denied {
+  color: #d9534f;
+}
+
+.leave-actions {
+  display: grid;
+  gap: 1rem;
+}
+
+/* 
+ * ========================
+ * Media Queries and Animation
+ * ========================
+ */
+
+@media (min-width: 83em) {
+  nav {
+    grid-template-columns: 0fr 8fr 4fr;
+  }
+}
+
+@media (min-width: 76.9em) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+}
+
+@media (min-width: 37.51em) {
+  .sidebar {
+    width: 32ch;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
+
+@media (max-width: 37.51em) {
+  nav {
+    grid-template-columns: 2fr 1fr 1fr;
+    border-bottom-right-radius: 0;
+  }
+  .sidebar {
+    border-bottom-right-radius: 0;
+    border-right: none;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .search-bar {
+    border: none;
+  }
+  .search {
+    display: none;
+  }
+  .bx,
+  .logo-itself {
+    justify-self: center;
+  }
+}
+
+@media (max-width: 76em) {
+  nav {
+    grid-template-columns: 1fr 1fr 2fr;
+  }
+  .nav-links,
+  .sign-in {
+    display: none;
+  }
+  .menu {
+    display: contents;
+  }
+  .bx-menu {
+    font-size: 5rem;
+  }
+}
+
+@media (max-width: 97.69em) {
+  .nav-links {
+    font-size: 1rem;
+    gap: 1.5em;
+  }
+  nav {
+    grid-template-columns: 0fr 8fr 4fr;
+  }
+  .dropdown-menu a {
+    font-size: 1rem;
+  }
+}
+
+@keyframes circular-movement {
+  0% {
+    transform: rotate(0deg);
+  }
+  5% {
+    transform: rotate(18deg);
+  }
+  10% {
+    transform: rotate(36deg);
+  }
+  15% {
+    transform: rotate(54deg);
+  }
+  20% {
+    transform: rotate(72deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  30% {
+    transform: rotate(108deg);
+  }
+  35% {
+    transform: rotate(126deg);
+  }
+  40% {
+    transform: rotate(144deg);
+  }
+  45% {
+    transform: rotate(162deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  55% {
+    transform: rotate(198deg);
+  }
+  60% {
+    transform: rotate(216deg);
+  }
+  65% {
+    transform: rotate(234deg);
+  }
+  70% {
+    transform: rotate(252deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  80% {
+    transform: rotate(288deg);
+  }
+  85% {
+    transform: rotate(306deg);
+  }
+  90% {
+    transform: rotate(324deg);
+  }
+  95% {
+    transform: rotate(342deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="payroll report page" />
+    <meta name="author" content="Guzon Japeth, Llaguno Kyle, Pacaldo Sam" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="4680" />
+    <title>Payroll</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/00Image/favicon.ico" />
+    <!-- Cascading Style Sheet -->
+    <link rel="stylesheet" href="payroll.css" />
+    <!-- CSS.GG -->
+    <link href="https://css.gg/css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/4f7e7a7341.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Boxicons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav>
+      <div class="menu">
+        <i class="bx bx-menu"></i>
+      </div>
+      <div class="logo-itself">
+        <a href="/01Landing Page/index.html">
+          <img src="/00Image/hrm-logo.png" alt="logo" class="hrm-logo" />
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li class="dropdown">
+          <a class="top">HR Management</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="/02HR Management/021Administration/admin.html"
+                >Administration</a
+              >
+            </li>
+            <li>
+              <a href="/02HR Management/022HR Planning/hrplan.html"
+                >Planning</a
+              >
+            </li>
+            <li>
+              <a href="/02HR Management/023Recruitment/rlm.html"
+                >Recruitment</a
+              >
+            </li>
+            <li>
+              <a href="/02HR Management/024Performances/perm.html"
+                >Performance</a
+              >
+            </li>
+            <li>
+              <a href="/02HR Management/025Employees/employee.html"
+                >Employees</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="top">Time and Attendance</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="/04Time and Attendance/041Schedule and Rota/rota.html"
+                >Schedule and Rota</a
+              >
+            </li>
+            <li>
+              <a
+                href="/04Time and Attendance/042Absences and Leave/leave.html"
+                >Absences and Leave</a
+              >
+            </li>
+            <li>
+              <a
+                href="/04Time and Attendance/043Grievance Handling/grief.html"
+                >Grievance Handling</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="/03Payroll/payroll.html" class="active">Payroll</a>
+        </li>
+        <li>
+          <a href="/05Benefits/benefits.html">Benefits</a>
+        </li>
+        <li>
+          <a href="/06Analytics/report.html">Analytics</a>
+        </li>
+      </ul>
+      <div class="search-login">
+        <div class="search-bar">
+          <input
+            type="text"
+            placeholder="search for an employee..."
+            class="search"
+          />
+          <button><i class="bx bx-search-alt"></i></button>
+        </div>
+        <a href="/002Login Page/login.html" class="sign-in">logout</a>
+      </div>
+    </nav>
+    <!-- End of Navigation Bar -->
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <!-- Links -->
+      <ul class="sidebar-links">
+        <li><a>human resource management</a></li>
+        <li><a>payroll</a></li>
+        <li><a>time and attendance</a></li>
+        <li><a>benefits</a></li>
+        <li><a>analytics</a></li>
+      </ul>
+      <!-- Search and Login -->
+      <div class="sidebar-login">
+        <a href="" class="login">logout</a>
+      </div>
+    </aside>
+    <!-- End of Sidebar -->
+
+    <!-- Content -->
+    <main>
+        <!-- Table -->
+        <table class="payroll-table">
+          <thead>
+            <tr>
+              <th>Employee Name</th>
+              <th>Period Start</th>
+              <th>Period End</th>
+              <th>Regular Hours</th>
+              <th>Overtime Hours</th>
+              <th>Regular Pay Rate</th>
+              <th>Overtime Pay Rate</th>
+              <th>Regular Pay</th>
+              <th>Overtime Pay</th>
+              <th>Gross Pay</th>
+              <th>Deductions</th>
+              <th>Net Pay</th>
+              <th>Pay Date</th>
+              <th>Pay Method</th>
+              <th>Status</th>
+            </tr>
+            <!-- Table contents -->
+            <tbody>
+        </thead>
+            <tr class="payroll-row">
+              <td class="employee-name">Joseph Brody</td>
+              <td><time datetime="2023-03-01">3/1/2023</time></td>
+              <td><time datetime="2023-03-15">3/15/2023</time></td>
+              <td>80</td>
+              <td>10</td>
+              <td>$20.00</td>
+              <td>$30.00</td>
+              <td>$1,600.00</td>
+              <td>$300.00</td>
+              <td>$1,900.00</td>
+              <td>$400.00</td>
+              <td>$1,500.00</td>
+              <td><time datetime="2023-03-20">March 20, 2023</time></td>
+              <td>Direct Deposit</td>
+              <td>Paid</td>
+            </tr>
+            <tr>
+              <td class="payroll-row">John Doe</td>
+              <td><time datetime="2023-03-01">March 1, 2023</time></td>
+              <td><time datetime="2023-03-15">March 15, 2023</time></td>
+              <td>75</td>
+              <td>5</td>
+              <td>$18.00</td>
+              <td>$27.00</td>
+              <td>$1,350.00</td>
+              <td>$135.00</td>
+              <td>$1,485.00</td>
+              <td>$300.00</td>
+              <td>$1,185.00</td>
+              <td><time datetime="2023-03-20">March 20, 2023</time></td>
+              <td>Check</td>
+              <td>Paid</td>
+            </tr>
+            <tr class="payroll-row">
+              <td>Bob Johnson</td>
+              <td><time datetime="2023-03-01">March 1, 2023</time></td>
+              <td><time datetime="2023-03-15">March 15, 2023</time></td>
+              <td>70</td>
+              <td>15</td>
+              <td>$22.00</td>
+              <td>$33.00</td>
+              <td>$1,540.00</td>
+              <td>$495.00</td>
+              <td>$2,035.00</td>
+              <td>$350.00</td>
+              <td>$1,685.00</td>
+              <td><time datetime="2023-03-20">March 20, 2023</time></td>
+              <td>Direct Deposit</td>
+              <td>Paid</td>
+            </tr>
+            <tr class="payroll-row">
+              <td>Samantha Lee</td>
+              <td><time datetime="2023-03-01">March 1, 2023</time></td>
+              <td><time datetime="2023-03-15">March 15, 2023</time></td>
+              <td>85</td>
+              <td>20</td>
+              <td>$25.00</td>
+              <td>$37.50</td>
+              <td>$2,125.00</td>
+              <td>$750.00</td>
+              <td>$2,875.00</td>
+              <td>$400.00</td>
+              <td>$2,475.00</td>
+              <td><time datetime="2023-03-20">March 20, 2023</time></td>
+              <td>Check</td>
+              <td>Paid</td>
+            </tr>
+          </tbody>
+          <!-- End of Table Contents -->
+        </table>
+        <!-- End of Table -->
+    </main>
+    <!-- End of Content -->
+
+    <!-- JavaScript -->
+    <script src="payroll.js"></script>
+  </body>
+</html>
