@@ -1,5 +1,20 @@
 # Human Resources Systems
 
+April 16 2023
+
+    Massive additions of pages including :
+        Login
+        Payroll
+        Absences and Leave
+        Benefits
+            Setup Plans
+
+    Created new folders for the Benefits Page where it includes :
+        Setup Plans
+        Track Employees
+        Eligibilty
+        Reports
+
 March 14, 2023
 
     Added a new function to the homepage that allows hovering over navigation links to show content.
