@@ -1,5 +1,9 @@
 # Human Resources Systems
 
+May 3 2023
+
+    Future pages will now use Tailwind CS.
+
 April 16 2023
 
     Massive additions of pages including :

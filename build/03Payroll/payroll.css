@@ -5,7 +5,7 @@
  */
 @font-face {
   font-family: "PT Serif";
-  src: url(/001Font/PT_Serif/PTSerif-Regular.ttf);
+  src: url(/build/001Font/PT_Serif/PTSerif-Regular.ttf);
 }
 
 /* 
@@ -258,24 +258,24 @@ select {
 
 /* 
  * ========================
- * Leave and Absences Content
+ * Payroll Content
  * ========================
  */
 
-.leave-table {
+.payroll-table {
   border-collapse: collapse;
   font-size: 1rem;
   text-align: center;
   margin-top: 1rem;
 }
 
-.leave-table thead {
+.payroll-table thead {
   background-color: var(--color-secondary);
   color: var(--color-primary);
 }
 
-.leave-table td {
-  border-top: 0.1rem solid var(--color-secondary);
+.payroll-table td {
+  border-bottom: 0.1rem solid var(--color-secondary);
   padding: 2rem;
 }
 
@@ -308,43 +308,6 @@ select {
   gap: 1rem;
 }
 
-.leave-actions button {
-  margin-bottom: 5px;
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 0.5rem;
-  color: #ffffff;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.15s ease-in;
-}
-
-.leave-actions button:hover {
-  border-radius: 1rem;
-  transition: all 0.15s ease-in;
-}
-
-.approve-button {
-  background-color: #5cb85c;
-}
-
-.deny-button {
-  background-color: #d9534f;
-}
-
-.file-upload {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-}
-
-.file-upload input[type="file"] {
-  font-size: 1rem;
-  cursor: pointer;
-  opacity: 1;
-  filter: alpha(opacity=100);
-}
-
 /* 
  * ========================
  * Media Queries and Animation
@@ -365,8 +328,7 @@ select {
 
 @media (min-width: 37.51em) {
   .sidebar {
-    border-bottom-right-radius: 0;
-    border-right: none;
+    width: 32ch;
     font-family: Arial, Helvetica, sans-serif;
   }
 }
@@ -396,7 +358,6 @@ select {
 @media (max-width: 76em) {
   nav {
     grid-template-columns: 1fr 1fr 2fr;
-    border-bottom-right-radius: 0;
   }
   .nav-links,
   .sign-in {

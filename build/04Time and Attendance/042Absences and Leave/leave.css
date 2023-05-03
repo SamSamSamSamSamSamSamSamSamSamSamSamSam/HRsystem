@@ -5,7 +5,7 @@
  */
 @font-face {
   font-family: "PT Serif";
-  src: url(../001Font/PT_Serif/PTSerif-Regular.ttf);
+  src: url(/build/001Font/PT_Serif/PTSerif-Regular.ttf);
 }
 
 /* 
@@ -245,6 +245,106 @@ select {
   font-size: 2.5rem;
 }
 
+.active {
+  font-weight: 800;
+  border-top: solid 0.15rem;
+  transition: all 0.1s ease-out;
+}
+
+.active:hover a {
+  color: var(--color-primary);
+  box-shadow: none;
+}
+
+/* 
+ * ========================
+ * Leave and Absences Content
+ * ========================
+ */
+
+.leave-table {
+  border-collapse: collapse;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.leave-table thead {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+
+.leave-table td {
+  border-top: 0.1rem solid var(--color-secondary);
+  padding: 2rem;
+}
+
+.employee-name,
+.leave-start-date,
+.leave-end-date,
+.leave-date {
+  text-align: center;
+}
+
+.leave-type,
+.leave-status {
+  text-transform: capitalize;
+}
+
+.status-pending {
+  color: #f0ad4e;
+}
+
+.status-approved {
+  color: #5cb85c;
+}
+
+.status-denied {
+  color: #d9534f;
+}
+
+.leave-actions {
+  display: grid;
+  gap: 1rem;
+}
+
+.leave-actions button {
+  margin-bottom: 5px;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.15s ease-in;
+}
+
+.leave-actions button:hover {
+  border-radius: 1rem;
+  transition: all 0.15s ease-in;
+}
+
+.approve-button {
+  background-color: #5cb85c;
+}
+
+.deny-button {
+  background-color: #d9534f;
+}
+
+.file-upload {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.file-upload input[type="file"] {
+  font-size: 1rem;
+  cursor: pointer;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
 /* 
  * ========================
  * Media Queries and Animation
@@ -265,7 +365,8 @@ select {
 
 @media (min-width: 37.51em) {
   .sidebar {
-    width: 32ch;
+    border-bottom-right-radius: 0;
+    border-right: none;
     font-family: Arial, Helvetica, sans-serif;
   }
 }
@@ -295,6 +396,7 @@ select {
 @media (max-width: 76em) {
   nav {
     grid-template-columns: 1fr 1fr 2fr;
+    border-bottom-right-radius: 0;
   }
   .nav-links,
   .sign-in {
