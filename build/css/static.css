@@ -208,21 +208,16 @@ select {
   display: grid;
   grid-template-rows: 8fr 10fr;
   transition: all 0.2s ease-in-out;
-  transform: translateX(-100%);
   font-size: 1.6rem;
   border-style: solid;
+  transform: translateX(-100%);
   border-color: var(--color-primary);
   border-width: 0;
   border-bottom-right-radius: 100rem;
-  overflow-y: auto;
 }
 
 .show-sidebar {
   transform: translateX(0);
-}
-
-body.show-sidebar {
-  overflow: hidden;
 }
 
 .sidebar-links li {
@@ -247,6 +242,17 @@ body.show-sidebar {
 .login:hover {
   border-radius: 5rem;
   font-size: 2.5rem;
+}
+
+.active {
+  font-weight: 800;
+  border-top: solid 0.15rem;
+  transition: all 0.1s ease-out;
+}
+
+.active:hover a {
+  color: var(--color-primary);
+  box-shadow: none;
 }
 
 /* 
