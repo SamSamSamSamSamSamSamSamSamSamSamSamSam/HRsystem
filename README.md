@@ -2,7 +2,7 @@
 
 May 3 2023
 
-    Future pages will now use Tailwind CS.
+    Future pages will now use Tailwind CSS.
     Created 2 new pages :
         Track Employees (Benefits)
         Analytics
