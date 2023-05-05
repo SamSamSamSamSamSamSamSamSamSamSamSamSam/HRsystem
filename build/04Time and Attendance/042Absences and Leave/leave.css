@@ -279,6 +279,10 @@ select {
   padding: 2rem;
 }
 
+.leave-table th {
+  padding: 1rem;
+}
+
 .employee-name,
 .leave-start-date,
 .leave-end-date,
@@ -304,7 +308,6 @@ select {
 }
 
 .leave-actions {
-  display: grid;
   gap: 1rem;
 }
 

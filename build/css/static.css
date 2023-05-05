@@ -255,6 +255,18 @@ select {
   box-shadow: none;
 }
 
+.status-pending {
+  color: #f0ad4e;
+}
+
+.status-approved {
+  color: #5cb85c;
+}
+
+.status-denied {
+  color: #d9534f;
+}
+
 /* 
  * ========================
  * Media Queries and Animation

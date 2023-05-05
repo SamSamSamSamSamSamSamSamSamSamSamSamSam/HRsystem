@@ -264,7 +264,7 @@ select {
 
 .payroll-table {
   border-collapse: collapse;
-  font-size: 1rem;
+  font-size: 1.1rem;
   text-align: center;
   margin-top: 1rem;
 }
@@ -274,9 +274,16 @@ select {
   color: var(--color-primary);
 }
 
+.payroll-table th {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .payroll-table td {
   border-bottom: 0.1rem solid var(--color-secondary);
   padding: 2rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .employee-name,
