@@ -120,7 +120,7 @@ select {
   position: fixed;
   background-color: var(--color-secondary);
   min-width: 50ch;
-  z-index: 1;
+  z-index: 2;
   padding: 1rem 0;
   border-bottom-left-radius: 2rem;
   border-bottom-right-radius: 2rem;
@@ -186,6 +186,10 @@ select {
   display: none;
 }
 
+.menu-open {
+  overflow: hidden;
+}
+
 .bx-menu:hover,
 .bx-x:hover {
   background-color: rgba(2, 5, 60, 0.12);
@@ -214,6 +218,7 @@ select {
   border-color: var(--color-primary);
   border-width: 0;
   border-bottom-right-radius: 100rem;
+  z-index: 100;
 }
 
 .show-sidebar {
@@ -265,6 +270,18 @@ select {
 
 .status-denied {
   color: #d9534f;
+}
+
+.approve-button {
+  background-color: #5cb85c;
+}
+
+.deny-button {
+  background-color: #d9534f;
+}
+
+.cancel-button {
+  background-color: orange;
 }
 
 /* 

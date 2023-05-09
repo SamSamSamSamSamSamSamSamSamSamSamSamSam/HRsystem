@@ -1,5 +1,13 @@
 # Human Resources Systems
 
+May 9 2023
+
+    Fixed where the page can still be scrolled while opening the sidebar menu
+    Added FullCalendar.js to the project
+    Separated the navigation/sidebars into becoming a one JavaScript file
+    Created a new page :
+        Schedule and Rota (Time and Attendance)
+
 May 5 2023
 
     Created a new page :
