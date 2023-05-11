@@ -1,5 +1,10 @@
 # Human Resources Systems
 
+May 11 2023
+
+    Created a new page :
+        Grievance Handling (Time and Attendance)
+
 May 9 2023
 
     Fixed where the page can still be scrolled while opening the sidebar menu
