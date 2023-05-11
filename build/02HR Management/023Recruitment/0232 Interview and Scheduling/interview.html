@@ -13,7 +13,7 @@
     <!-- Cascading Style Sheet -->
     <link rel="stylesheet" href="/build/css/static.css" />
     <link rel="stylesheet" href="/build/css/style.css" />
-    <link rel="stylesheet" href="rlm.css" />
+    <link rel="stylesheet" href="interview.css" />
     <!-- CSS.GG -->
     <link href="https://css.gg/css" rel="stylesheet" />
     <!-- Font Awesome -->
@@ -138,23 +138,127 @@
 
     <!-- Content -->
     <main class="m-4 text-human-resource-white">
-      <section class="benefits-page">
-        <a
-          href="/build/02HR Management/023Recruitment/0231 Job Posting and Tracking/posttrack.html"
+      <section>
+        <h2
+          class="mb-4 text-center text-2xl font-bold text-human-resource-white"
         >
-          <div class="benefits-pages">JOB POST AND TRACK APPLICANT</div>
-        </a>
-        <a
-          href="/build/02HR Management/023Recruitment/0232 Interview and Scheduling/interview.html"
+          Interview Scheduling
+        </h2>
+        <div
+          id="interviewScheduling"
+          class="rounded-md bg-gray-100 p-4 text-human-resource-blue"
         >
-          <div class="benefits-pages">SCHEDULE INTERVIEW</div>
-        </a>
+          <h3 class="mb-4 text-xl font-bold">Schedule Interviews</h3>
+          <form id="interviewSchedulingForm" class="flex flex-col gap-4">
+            <label for="candidateName" class="font-medium"
+              >Candidate Name:</label
+            >
+            <input
+              type="text"
+              id="candidateName"
+              name="candidateName"
+              required
+              class="rounded-lg border border-gray-300 px-4 py-2"
+            />
+
+            <label for="interviewDate" class="font-medium"
+              >Interview Date:</label
+            >
+            <input
+              type="date"
+              id="interviewDate"
+              name="interviewDate"
+              required
+              class="rounded-lg border border-gray-300 px-4 py-2"
+            />
+
+            <label for="interviewTime" class="font-medium"
+              >Interview Time:</label
+            >
+            <input
+              type="time"
+              id="interviewTime"
+              name="interviewTime"
+              required
+              class="rounded-lg border border-gray-300 px-4 py-2"
+            />
+
+            <label for="interviewLocation" class="font-medium"
+              >Interview Location:</label
+            >
+            <input
+              type="text"
+              id="interviewLocation"
+              name="interviewLocation"
+              required
+              class="rounded-lg border border-gray-300 px-4 py-2"
+            />
+
+            <button
+              type="submit"
+              class="btnS mt-4 rounded-md px-4 py-2 font-bold text-human-resource-white mx-auto"
+            >
+              Schedule Interview
+            </button>
+          </form>
+        </div>
+        <table id="scheduledInterviews" class="my-4 w-full border-collapse">
+          <thead>
+            <tr class="bg-human-resource-white text-human-resource-blue">
+              <th
+                class="border border-gray-300 px-4 py-2 text-left font-medium"
+              >
+                Applicant Name
+              </th>
+              <th
+                class="border border-gray-300 px-4 py-2 text-left font-medium"
+              >
+                Date
+              </th>
+              <th
+                class="border border-gray-300 px-4 py-2 text-left font-medium"
+              >
+                Time
+              </th>
+              <th
+                class="border border-gray-300 px-4 py-2 text-left font-medium"
+              >
+                Location
+              </th>
+              <th
+                class="border border-gray-300 px-4 py-2 text-left font-medium"
+              >
+                Status
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-300 px-4 py-2 text-center">
+                John Doe
+              </td>
+              <td class="border border-gray-300 px-4 py-2 text-center">
+                May 15, 2023
+              </td>
+              <td class="border border-gray-300 px-4 py-2 text-center">
+                10:00 AM
+              </td>
+              <td class="border border-gray-300 px-4 py-2 text-center">
+                Office Room 101
+              </td>
+              <td class="border border-gray-300 px-4 py-2 text-center">
+                Scheduled
+              </td>
+            </tr>
+            <!-- Additional rows for other scheduled interviews -->
+          </tbody>
+        </table>
       </section>
     </main>
     <!-- End of Content -->
 
     <!-- JavaScript -->
-    <script src="rlm.js"></script>
+    <script src="interview.js"></script>
     <script src="/build/js/bars.js"></script>
   </body>
 </html>

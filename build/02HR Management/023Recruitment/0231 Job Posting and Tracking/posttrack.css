@@ -1,0 +1,33 @@
+.criteria-popup {
+  position: relative;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: none;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 40ch;
+  z-index: 1;
+}
+
+.post-job {
+  background-color: #ccc;
+  border-style: solid;
+  border-color: rgb(17, 0, 71);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border-width: 0.15rem;
+  font-weight: bold;
+  transition: all 0.1s ease-in;
+}
+
+.post-job:hover {
+  background-color: rgb(17, 0, 71);
+  border-style: solid;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border-width: 0.15rem;
+  font-weight: bold;
+  transition: all 0.1s ease-out;
+}
