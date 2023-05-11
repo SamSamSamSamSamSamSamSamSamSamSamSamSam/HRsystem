@@ -62,7 +62,8 @@ Custom
   min-width: 5rem;
   min-height: 5rem;
   height: 2.5rem;
-  border-style: double;
+  border-style: solid;
+  border-width: 0.15rem;
   border-radius: 10rem;
 }
 
