@@ -2,8 +2,15 @@
 
 May 11 2023
 
+    Created new folders in the Recruitment :
+        Job Post and Track Applicant
+        Interview Scheduling
+
     Created a new page :
         Grievance Handling (Time and Attendance)
+        Recruitment
+            Job Post and Track Applicant
+            Interview Scheduling
 
 May 9 2023
 
