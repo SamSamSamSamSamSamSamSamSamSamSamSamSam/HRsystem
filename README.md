@@ -4,6 +4,11 @@ May 15 2023
     
     Created a new page :
         Employees (HR Management)
+    Deleted a folder :
+    021Administration
+        
+    Modified navigation link  :
+    From HR - Management, to Administration
 
 May 11 2023
 
