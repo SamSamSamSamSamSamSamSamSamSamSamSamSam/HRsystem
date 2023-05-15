@@ -1,0 +1,16 @@
+.submit-btn {
+  background: rgb(13, 2, 73);
+  transition: all 0.2s ease-in;
+}
+
+.submit-btn:hover {
+  background: rgb(39, 18, 152);
+  transition: all 0.2s ease-out;
+}
+
+.box-contain{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+}
