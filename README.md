@@ -1,8 +1,13 @@
 # Human Resources Systems
 
+May 15 2023
+    
+    Created a new page :
+        Employees (HR Management)
+
 May 11 2023
 
-    Created new folders in the Recruitment :
+    Created new folders in the Recruitment (HR Management) :
         Job Post and Track Applicant
         Interview Scheduling
 
