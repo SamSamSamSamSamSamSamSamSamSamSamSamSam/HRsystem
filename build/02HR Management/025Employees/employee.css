@@ -1,0 +1,5 @@
+.employee-actions:hover {
+    background: rgba(192, 61, 37, 0.985);
+    color: white;
+    box-shadow: 0.1rem -0.1rem 0.1rem white;
+}
