@@ -75,6 +75,10 @@ select {
   font: inherit;
 }
 
+main {
+  min-height: 80svh;
+}
+
 /* 
  * ========================
  * Custom
@@ -264,11 +268,11 @@ select {
  */
 .benefits-page {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2em;
 
   padding-block: 2rem;
-  width: min(80%, 80rem);
+  width: min(100%, 100rem);
   margin-inline: auto;
 }
 
@@ -342,6 +346,7 @@ select {
   .benefits-page {
     display: flex;
     flex-direction: column;
+    width: min(70%, 100rem);
   }
 }
 

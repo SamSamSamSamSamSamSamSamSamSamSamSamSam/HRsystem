@@ -284,6 +284,24 @@ select {
   background-color: orange;
 }
 
+.drp-dn-menuAdm,
+.drp-dn-menuAtt {
+  display: none;
+}
+
+.drp-dn-menuAdm a:hover,
+.drp-dn-menuAtt a:hover {
+  margin-left: 2rem;
+}
+
+.aktive {
+  display: contents;
+}
+
+.gg-math-plus {
+  cursor: pointer;
+}
+
 /* 
  * ========================
  * Media Queries and Animation
