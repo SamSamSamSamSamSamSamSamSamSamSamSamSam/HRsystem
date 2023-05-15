@@ -12,13 +12,13 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     events: [
       {
-        title: "John Doe",
+        title: "Joseph Cruz",
         daysOfWeek: [1, 3, 5], // Shifts on Monday, Wednesday, and Friday
         startTime: "09:00", // Shift start time
         endTime: "17:00", // Shift end time
       },
       {
-        title: "Jane Smith",
+        title: "Roland Dumlao",
         daysOfWeek: [2, 4], // Shifts on Tuesday and Thursday
         startTime: "13:00", // Shift start time
         endTime: "21:00", // Shift end time
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         endTime: "17:00", // Shift end time
       },
       {
-        title: "Emily Davis",
+        title: "Guy Malano",
         startRecur: "2023-05-12", // Start date of recurring shift
         daysOfWeek: [5], // Shifts on Friday
         startTime: "18:00", // Shift start time
