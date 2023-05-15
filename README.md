@@ -3,16 +3,18 @@
 May 15 2023
     
     Created a new page :
-        Employees (HR Management)
+        Employees (Administration)
+        Performance (Administration)
     Deleted a folder :
     021Administration
+    054Report
         
     Modified navigation link  :
     From HR - Management, to Administration
 
 May 11 2023
 
-    Created new folders in the Recruitment (HR Management) :
+    Created new folders in the Recruitment (Administration) :
         Job Post and Track Applicant
         Interview Scheduling
 
