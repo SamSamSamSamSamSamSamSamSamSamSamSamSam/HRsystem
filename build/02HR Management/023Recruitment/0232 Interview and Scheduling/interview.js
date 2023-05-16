@@ -11,3 +11,20 @@ plus_btnAdm.addEventListener("click", () => {
 plus_btnAtt.addEventListener("click", () => {
   menu_barAtt.classList.toggle("aktive");
 });
+
+// Footer display
+const footer_sections = document.querySelectorAll(".n-end");
+
+footer_sections.forEach((footer_section) => {
+  footer_section.addEventListener("click", () => {
+    // Toggle aktibo class for the clicked section
+    footer_section.querySelector(".n-info").classList.toggle("aktibo");
+
+    // Hide the other sections
+    footer_sections.forEach((section) => {
+      if (section !== footer_section) {
+        section.querySelector(".n-info").classList.remove("aktibo");
+      }
+    });
+  });
+});

@@ -75,6 +75,10 @@ select {
   font: inherit;
 }
 
+footer{
+  margin-top: 2rem;
+}
+
 /* 
  * ========================
  * Custom
@@ -234,6 +238,11 @@ select {
   text-align: center;
 }
 
+.sbar:hover {
+  background-color: rgb(204, 204, 204);
+  border-radius: 0.25rem;
+}
+
 .login {
   border: 0.13rem solid var(--color-primary);
   border-radius: 1rem;
@@ -292,10 +301,11 @@ select {
 .drp-dn-menuAdm a:hover,
 .drp-dn-menuAtt a:hover {
   margin-left: 2rem;
+  transition: all 0.1s linear;
 }
 
 .aktive {
-  display: contents;
+  display: block;
 }
 
 .gg-math-plus {
@@ -347,6 +357,46 @@ select {
   .logo-itself {
     justify-self: center;
   }
+}
+
+.end-page {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  gap: 4em;
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  min-height: 10vh;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.n-end {
+  text-align: center;
+  cursor: pointer;
+  padding: 1rem;
+  max-width: 45ch;
+  border-width: 0.12rem;
+  transition: all 0.25s ease-out;
+}
+.n-end:hover {
+  border-radius: 0.5rem;
+  background: var(--color-primary);
+  color: var(--color-secondary);
+  transition: all 0.25s ease-out;
+}
+
+.n-info {
+  display: none;
+}
+
+.aktibo {
+  display: contents;
 }
 
 @media (max-width: 76em) {
