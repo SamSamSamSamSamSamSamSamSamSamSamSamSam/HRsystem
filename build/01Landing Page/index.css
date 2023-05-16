@@ -39,6 +39,7 @@ body {
   font-family: var(--style-font);
   font-size: 1.3rem;
   text-transform: capitalize;
+  overflow: hidden;
 }
 
 nav {
@@ -359,6 +360,53 @@ body.show-sidebar {
 
 .aktibo {
   display: contents;
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(69deg, #0a1a348e, var(--color-primary));
+  z-index: -1;
+}
+
+header {
+  color: var(--color-primary);
+  font-size: 2.5rem;
+  text-align: center;
+  min-height: 100svh;
+  margin: 15rem;
+  text-shadow: 0.1rem -0.1rem 0.3rem rgb(255, 255, 255);
+  font-family: Helvetica, sans-serif;
+  transition: all 0.25s linear;;
+}
+
+@media (max-width: 746px) {
+  header {
+    font-size: 1.5rem;
+    transition: all 0.25s linear;
+    max-width: 50rem;
+  }
+}
+
+@media (max-width: 983px) {
+  header {
+    margin: 9rem;
+    transition: all 0.25s linear;
+  }
 }
 
 @media (max-width: 76em) {
