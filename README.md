@@ -3,6 +3,8 @@
 May 16 2023
     
     All webpages have now been created.
+    Landing page has now been updated.
+    Added a footer.
 
 May 15 2023
     
