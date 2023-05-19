@@ -1,5 +1,12 @@
 # Human Resources Systems
 
+May 19 2023
+
+    Added php files to all pages
+    Converted all links to connect to php files
+    Login page working (still needs improvement)
+    Added database folder
+
 May 16 2023
     
     All webpages have now been created.

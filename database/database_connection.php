@@ -13,4 +13,13 @@ $dataBase_name = "human_resource_system";
 ---------------------------------------------------------------------------------------------------------------------------*/
 $connection = mysqli_connect($host_name, $username, $password, $dataBase_name);  
 
+/*---------------------------------------------------------------------------------------------------------------------------
+    checking to see if connection is successfull
+---------------------------------------------------------------------------------------------------------------------------*/
+    if(!$connection){
+        die("Error: Failed to connect to database.");
+    }else{
+        //echo "Connection Established!";
+    }
+
 ?>
