@@ -51,7 +51,6 @@
               type="text"
               name="username"
               id="username"
-              required
               placeholder="sebastian_hans1989@gmail.com"
               class="input-style"
             />
@@ -70,7 +69,6 @@
               id="password"
               placeholder=""
               class="input-style"
-              required
             />
           </div>
           <!-- Submit -->
@@ -80,35 +78,8 @@
         </form>
 <!---------------------------------------------------------------------------------------------------------------------->   
 <?php
-/*---------------------------------------------------------------------------------------------------------------------------
-    the funtion verify if username and password input in registered in the databasae
----------------------------------------------------------------------------------------------------------------------------*/
-  function verify_Login() {
-    //include 'database_connection.php';
-    include '../../database/database_connection.php';
-    $select = "SELECT * FROM Accounts";               // selects Account table from data base
-    $result = mysqli_query($connection, $select);     // sql query
-      if(mysqli_num_rows($result) > 0) {
-        // table is not empty
-        if(isset($_POST['submit'])) {
-          while($row = mysqli_fetch_assoc($result)) {
-            if($_POST['username']==$row['email'] && $_POST['password']==$row['password']) {
-              return true;
-            }
-          }
-        } 
-      }
-    return false;
-  }
-/*---------------------------------------------------------------------------------------------------------------------------
-    heads to index.php page if login is successfull
----------------------------------------------------------------------------------------------------------------------------*/
-  if(verify_Login()==false) {
-    //echo "pls try again";
-  } 
-  else {
-    header("Location: /build/01Landing Page/index.php");
-  }
+
+
 ?>
 <!---------------------------------------------------------------------------------------------------------------------->       
       </div>

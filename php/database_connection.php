@@ -3,23 +3,19 @@
 /*---------------------------------------------------------------------------------------------------------------------------
     variables for mysqli_connection parameters
 ---------------------------------------------------------------------------------------------------------------------------*/
-$host_name = "localhost";
-$username = "root";
-$password = "";
-$dataBase_name = "human_resource_system";
+    $host_name = "localhost";
+    $username = "root";
+    $password = "";
+    $dataBase_name = "human_resource_system"; // database name, change if different database in used
 
 /*---------------------------------------------------------------------------------------------------------------------------
-    this is the variable for mysqli_connect
+    $connection holds the mysqli_connect();, inlcude in other php files to connect in the database
 ---------------------------------------------------------------------------------------------------------------------------*/
-$connection = mysqli_connect($host_name, $username, $password, $dataBase_name);  
+    $connection = mysqli_connect($host_name, $username, $password, $dataBase_name);  
 
 /*---------------------------------------------------------------------------------------------------------------------------
-    checking to see if connection is successfull
+    check to see if connection failed and what type of error it have
 ---------------------------------------------------------------------------------------------------------------------------*/
     if(!$connection){
-        die("Error: Failed to connect to database.");
-    }else{
-        //echo "Connection Established!";
+        die("Connection failed: " . mysqli_connect_error());
     }
-
-?>

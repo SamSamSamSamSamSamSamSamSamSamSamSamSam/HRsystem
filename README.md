@@ -1,5 +1,16 @@
 # Human Resources Systems
 
+May 20 2023
+
+    Moved the search employee bar and sidebar function in sidebar-and-search.php
+    Same as the footer, move to footer.php 
+        this is necessary so that when I edit the search employee fuction I only
+        have to edit 1 file. same applies to the footer 
+    added new folder named php. For php only code
+    Existing php actions where removed.
+    Starting over the php codes.
+    Added database folder for SQL files    
+    
 May 19 2023
 
     Added php files to all pages

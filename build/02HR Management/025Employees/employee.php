@@ -95,99 +95,25 @@
           <a href="/build/06Analytics/report.php">Analytics</a>
         </li>
       </ul>
-      <div class="search-login">
-        <div class="search-bar ring-2 ring-human-resource-gray">
-          <input
-            type="text"
-            placeholder="search for an employee."
-            class="search focus:outline-none"
-          />
-          <button><i class="bx bx-search-alt"></i></button>
-        </div>
-        <a href="/build/002Login Page/login.php" class="sign-in">logout</a>
-      </div>
-    </nav>
-    <!-- End of Navigation Bar -->
-
-    <!-- Sidebar -->
-    <aside class="sidebar text-human-resource-blue">
-      <!-- Links -->
-      <ul class="sidebar-links">
-        <li>
-          <a class="plusAdm"
-            >administration
-            <button><i class="gg-math-plus"></i></button>
-            <ul class="drp-dn-menuAdm">
-              <li>
-                <a href="/build/02HR Management/023Recruitment/rlm.php"
-                  >Recruitment</a
-                >
-              </li>
-              <li>
-                <a href="/build/02HR Management/024Performances/perm.php"
-                  >Performance</a
-                >
-              </li>
-              <li>
-                <a href="/build/02HR Management/025Employees/employee.php"
-                  >Employees</a
-                >
-              </li>
-            </ul></a
-          >
-        </li>
-
-        <li>
-          <a class="plusAtt"
-            >time and attendance
-            <button><i class="gg-math-plus"></i></button>
-            <ul class="drp-dn-menuAtt">
-              <li>
-                <a
-                  href="/build/04Time and Attendance/041Schedule and Rota/rota.php"
-                  >Schedule and Rota</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/build/04Time and Attendance/042Absences and Leave/leave.php"
-                  >Abscences and Leave</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/build/04Time and Attendance/043Grievance Handling/grief.php"
-                  >Grievance Handling</a
-                >
-              </li>
-            </ul></a
-          >
-        </li>
-
-        <li><a href="/build/03Payroll/payroll.php">payroll</a></li>
-        <li><a href="/build/05Benefits/benefits.php">benefits</a></li>
-        <li><a href="/build/06Analytics/report.php">analytics</a></li>
-      </ul>
-      <!-- Search and Login -->
-      <div class="sidebar-login">
-        <a href="" class="login">sign out</a>
-      </div>
-    </aside>
-    <!-- End of Sidebar -->
+      <?php include_once '../../../php/sidebar-and-search.php'; ?>
 
     <!-- Content -->
     <main class="text-human-resource-white">
+<!---------------------------------------------------------------------------------------------------------------------->         
+    <form action="" method="post"> 
       <div
         class="mx-auto mb-8 mt-8 flex max-w-sm items-center justify-center gap-3"
       >
         <input
           type="text"
           id="search-bar"
+          name="search-record"
           placeholder="Search..."
           class="flex-grow rounded-md border border-gray-400 px-4 py-2 text-human-resource-blue"
         />
         <select
           id="filter"
+          name="search-selection"
           class="align-self-center rounded-md border border-gray-400 px-4 py-2 text-human-resource-blue"
         >
           <option value="all">All</option>
@@ -195,6 +121,8 @@
           <option value="position">Position</option>
         </select>
       </div>
+    </form>
+<!---------------------------------------------------------------------------------------------------------------------->         
       <table
         id="employeeTable"
         class="my-2 hidden w-screen border-collapse md:table"
@@ -214,11 +142,17 @@
         </thead>
         <tbody>
           <!-- Employee list data goes here -->
+<!---------------------------------------------------------------------------------------------------------------------->  
+<?php
+
+
+?>    
+<!---------------------------------------------------------------------------------------------------------------------->           
           <tr class="border-b border-human-resource-white">
             <td class="text-center">123456</td>
             <td class="py-16 text-center">
               <a
-                href="#"
+                href="/build/02HR Management/025Employees/employeeInfo.php?EID="
                 class="employeeDetailsLink font-medium text-blue-600 hover:text-blue-800"
                 >Dean Cabangon</a
               >
@@ -232,63 +166,7 @@
               Hours: 40
             </td>
           </tr>
-          <!-- Additional rows for other employees -->
-          <tr class="border-b border-human-resource-white">
-            <td class="text-center">123457</td>
-            <td class="py-16 text-center">
-              <a
-                href="#"
-                class="employeeDetailsLink font-medium text-blue-600 hover:text-blue-800"
-                >Lazaro Cayabyab</a
-              >
-            </td>
-            <td class="text-center">Junior Software Engineer</td>
-            <td class="text-center">IT</td>
-            <td class="text-center">lazarocayabyab@example.com</td>
-            <td class="status-approved text-center">Active</td>
-            <td class="text-center">
-              Hire Date: 1/1/2023<br />Contract Type: Full-time<br />Working
-              Hours: 40
-            </td>
-          </tr>
-          <!-- Additional rows for other employees -->
-          <tr class="border-b border-human-resource-white">
-            <td class="text-center">123458</td>
-            <td class="py-16 text-center">
-              <a
-                href="#"
-                class="employeeDetailsLink font-medium text-blue-600 hover:text-blue-800"
-                >Iyana Paz Sison</a
-              >
-            </td>
-            <td class="text-center">Network Engineer</td>
-            <td class="text-center">IT</td>
-            <td class="text-center">iyanpaz@example.com</td>
-            <td class="status-pending text-center">On Leave</td>
-            <td class="text-center">
-              Hire Date: 6/3/2016<br />Contract Type: Full-time<br />Working
-              Hours: 40
-            </td>
-          </tr>
-          <!-- Additional rows for other employees -->
-          <tr class="border-b border-human-resource-white">
-            <td class="text-center">123459</td>
-            <td class="py-16 text-center">
-              <a
-                href="#"
-                class="employeeDetailsLink font-medium text-blue-600 hover:text-blue-800"
-                >Guy Malano</a
-              >
-            </td>
-            <td class="text-center">Senior Software Engineer</td>
-            <td class="text-center">IT</td>
-            <td class="text-center">malano@example.com</td>
-            <td class="status-approved text-center">Active</td>
-            <td class="text-center">
-              Hire Date: 5/8/2012<br />Contract Type: Full-time<br />Working
-              Hours: 40
-            </td>
-          </tr>
+<!---------------------------------------------------------------------------------------------------------------------->               
         </tbody>
       </table>
 
@@ -448,31 +326,7 @@
     </main>
     <!-- End of Content -->
 
-    <!-- Footer -->
-    <footer class="end-page">
-      <div class="copyright">@2023 Human Resouce System</div>
-      <div class="n-end">
-        About
-        <div class="n-info">
-          <hr />
-          <p>A basic project of a Human Resource Systems.</p>
-        </div>
-      </div>
-      <div class="n-end">
-        Contact Us
-        <div class="n-info">
-          <hr />
-          <section class="info">Japeth Guzon : 09954014922</section>
-          <hr />
-          <section class="info">Sailor Sam Pacaldo : 09954014922</section>
-          <hr />
-          <section class="info">Kyle Llaguno : 09954014922</section>
-          <hr />
-        </div>
-      </div>
-    </footer>
-    <!-- End of Footer -->
-
+    <?php include_once '../../../php/footer.php'; ?>
     <!-- JavaScript -->
     <script src="employee.js"></script>
     <script src="/build/js/bars.js"></script>
