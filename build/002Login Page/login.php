@@ -43,13 +43,13 @@
       <!-- SIGN - IN -->
       <div class="wrapper-sign-in">
 <!---------------------------------------------------------------------------------------------------------------------->
-        <form action="" method="post">
+        <form action="/php/includes/login.inc.php" method="post">
           <!-- Username -->
           <div class="user-name">
             <label for="username">Username or email address</label>
             <input
               type="text"
-              name="username"
+              name="login-email"
               id="username"
               placeholder="sebastian_hans1989@gmail.com"
               class="input-style"
@@ -65,7 +65,7 @@
             </div>
             <input
               type="password"
-              name="password"
+              name="login-pass"
               id="password"
               placeholder=""
               class="input-style"
@@ -78,8 +78,28 @@
         </form>
 <!---------------------------------------------------------------------------------------------------------------------->   
 <?php
-
-
+  // Error Handling:
+  if (isset($_GET["error"])) {
+    switch ($_GET["error"]) {
+      case "emptyinput":
+        echo "<br><p class='error-msg'>Please enter username and password!</p>";
+        break;
+      case "dbisempty":
+        echo "<br><p class='error-msg'>Please enter username and password!</p>";
+        break;
+      case "dbconnfailed":
+        echo "<br><p class='error-msg'>Please enter username and password!</p>";
+        break;
+      case "usernotfound":
+        echo "<br><p class='error-msg'>Please enter username and password!</p>";
+        break;
+      case "wrongpass":
+        echo "<br><p class='error-msg'>Please enter username and password!</p>";
+        break;
+      default:
+        break;
+    }
+  }
 ?>
 <!---------------------------------------------------------------------------------------------------------------------->       
       </div>

@@ -57,6 +57,12 @@ Custom
 ==========
 */
 
+.error-msg {
+  font-size: 0.9rem;
+  color: red;
+  text-decoration: none;
+}
+
 .hrm-logo {
   width: 2.5rem;
   min-width: 5rem;
