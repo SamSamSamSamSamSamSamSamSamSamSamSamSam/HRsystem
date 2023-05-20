@@ -1,5 +1,10 @@
 # Human Resources Systems
 
+May 21 2023
+
+    Login function added again with error messages
+    Added funtions.php file that will contain user-defined functions made by me
+
 May 20 2023
 
     Moved the search employee bar and sidebar function in sidebar-and-search.php
