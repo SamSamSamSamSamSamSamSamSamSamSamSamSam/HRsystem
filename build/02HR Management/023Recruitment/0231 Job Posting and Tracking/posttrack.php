@@ -98,14 +98,19 @@
           <a href="/build/06Analytics/report.php">Analytics</a>
         </li>
       </ul>
-      <?php include_once '../../../../php/sidebar-and-search.php'; ?>
+      <form action="../../../../php/includes/employee.inc.php" method="post">  
+      <?php 
+        include_once '../../../../php/sidebar-and-search.php'; 
+        require_once '../../../../php/includes/dbconn.inc.php';
+      ?>
 
     <!-- Content -->
     <main class="m-4 text-human-resource-white">
       <section class="mb-8">
         <h2 class="mb-4 text-center text-xl font-bold">Job Posting</h2>
+<!----------------[ FORM JOB POST ]------------------------------------------------------------------------------------------------------->        
         <form
-          id="jobPostingForm"
+          id="jobPostingForm" action="../../../../php/includes/posttrack.inc.php" method="post" 
           class="mx-auto max-w-2xl rounded-lg bg-human-resource-white p-8 text-human-resource-blue"
         >
           <div class="mb-4">
@@ -115,6 +120,7 @@
             <input
               type="text"
               id="jobTitle"
+              name="job-name"
               required
               class="w-full rounded-md border border-gray-400 px-3 py-2"
             />
@@ -126,6 +132,7 @@
             >
             <textarea
               id="jobDescription"
+              name="job-desc"
               required
               class="w-full rounded-md border border-gray-400 px-3 py-2"
             ></textarea>
@@ -137,6 +144,7 @@
             >
             <textarea
               id="qualifications"
+              name="quals"
               required
               class="w-full rounded-md border border-gray-400 px-3 py-2"
             ></textarea>
@@ -149,6 +157,7 @@
             <input
               type="text"
               id="experience"
+              name="exp"
               required
               class="w-full rounded-md border border-gray-400 px-3 py-2"
             />
@@ -161,6 +170,7 @@
             <input
               type="text"
               id="salaryRange"
+              name="sal-range"
               required
               class="w-full rounded-md border border-gray-400 px-3 py-2"
             />
@@ -172,16 +182,135 @@
             >
             <textarea
               id="otherDetails"
+              name="others"
               class="w-full rounded-md border border-gray-400 px-3 py-2"
             ></textarea>
           </div>
 
-          <button type="submit" class="post-job">Post Job</button>
+          <button type="submit" class="post-job" name="submit-post">Post Job</button>
         </form>
+<!------------------------------------------------------------------------------------------------------------------------------> 
+<?php
+
+  function displayJobPost ($connection) {
+    $sql = "SELECT * FROM job_postings LEFT JOIN jobs ON job_postings.jp_jobID = jobs.jobID;";
+    $result = mysqli_query($connection, $sql);
+      if (!$result) {
+        exit();
+      }
+      // checks if their are records in the job postings
+      if (mysqli_num_rows($result) > 0) {
+        // display all job postings
+        while ($row = mysqli_fetch_assoc($result)) {
+          echo "
+            <tr class='border-b border-human-resource-white'>
+              <td class='job-title p-4 py-8 text-center'>". $row["jobTitle"] ."</td>
+              <td class='px-4 py-2'>". $row["qualDesc"] ."</td>
+              <td class='px-4 py-2'>". $row["expReq"] ."</td>
+              <td class='px-4 py-2'>". $row["salRange"] ."</td>
+            </tr>
+          ";
+        }
+      }
+  }
+
+  function displayJobPost_otherdetails ($connection) {
+    $sql = "SELECT * FROM job_postings LEFT JOIN jobs ON job_postings.jp_jobID = jobs.jobID;";
+    $result = mysqli_query($connection, $sql);
+      if (!$result) {
+        exit();
+      }
+      // checks in there are job postings
+      if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+          echo "
+            <li>(". $row["jobTitle"] .")</li>
+            ". $row["otherDesc"] ."
+            <br><br>
+          ";
+        }
+      }
+  }
+
+  function displayApplicant_progress($connection) {
+    $sql = "SELECT applicants.appID, applicants.name, application_progress.resumeScr, application_progress.phoneScr, application_progress.refCheck, interview_scheds.ivwSts 
+            FROM `application_progress` 
+            INNER JOIN applicants ON application_progress.prog_appID = applicants.appID
+            INNER JOIN interview_scheds ON application_progress.prog_ivwID = interview_scheds.ivwID;
+            ";
+    $result = mysqli_query($connection, $sql);
+      if (!$result) {
+        exit();
+      }
+      // checks in there are job postings
+      if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+          echo "
+            <tr class='border-b border-human-resource-white'>
+              <td class='border px-4 py-2 text-center'>". $row["appID"] ."</td>
+              <td class='border px-4 py-2 text-center'>". $row["name"] ."</td>
+              <td
+                class=' border px-4 py-2 text-center text-green-500'
+              >
+                ". $row["resumeScr"] ."
+              </td>
+              <td
+                class=' border px-4 py-2 text-center text-yellow-500'
+              >
+                ". $row["phoneScr"] ."
+              </td>
+              <td class='border px-4 py-2 text-center text-gray-400'>
+                ". $row["ivwSts"] ."
+              </td>
+              <td
+                class=' border px-4 py-2 text-center text-gray-400'
+              >
+                ". $row["refCheck"] ."
+              </td>
+            </tr>
+          ";
+        }
+      }
+  }
+
+  function displayApplicant_shortlisted ($connection) {
+    $sql = "SELECT applicants.appID, applicants.name, application_progress.shortListed  
+            FROM `application_progress` 
+            INNER JOIN applicants ON application_progress.prog_appID = applicants.appID
+            ";
+    $result = mysqli_query($connection, $sql);
+      if (!$result) {
+        exit();
+      }
+      // checks in there are job postings
+      if (mysqli_num_rows($result) > 0) {
+        $slCount = 0;
+        while ($row = mysqli_fetch_assoc($result)) {
+          // checks if applicant is shortlisted
+          if ($row["shortListed"]==1) {
+            echo "
+              <li>". $row["name"] ."</li><br>
+            ";
+            $slCount++;
+          }
+        }
+
+        if ($slCount==0) {
+          echo "
+              <li>no applicant shortlisted</li>
+          ";
+        }
+
+      }
+  }
+?> 
+<!------------------------------------------------------------------------------------------------------------------------------>       
       </section>
 
       <section style="position: relative">
         <h2 class="mb-4 text-center text-xl font-bold">Current Postings</h2>
+
+
 
         <table
           id="jobPostings"
@@ -198,13 +327,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="border-b border-human-resource-white">
-              <td class="job-title p-4 py-8 text-center">Software Engineer</td>
-              <td class="px-4 py-2">Bachelor's degree in Computer Science</td>
-              <td class="px-4 py-2">2+ years</td>
-              <td class="px-4 py-2">P70,000.00 - P90,000.00</td>
-            </tr>
-            <!-- Additional rows for other job postings -->
+<!------------------------------------------------------------------------------------------------------------------------------>                
+ <?php
+      displayJobPost($connection);
+ ?>           
+<!------------------------------------------------------------------------------------------------------------------------------>                
           </tbody>
         </table>
 
@@ -217,9 +344,11 @@
             id="resumeScreeningCriteria"
             class="list-inside list-disc text-human-resource-blue"
           >
-            <li>Work Experience: Minimum 2 years</li>
-            <li>Education: Bachelor's degree or equivalent</li>
-            <li>Skills: Proficient in Java programming</li>
+<!------------------------------------------------------------------------------------------------------------------------------>                
+<?php
+      displayJobPost_otherdetails($connection);
+ ?>           
+<!------------------------------------------------------------------------------------------------------------------------------>              
           </ul>
         </div>
       </section>
@@ -243,29 +372,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="border-b border-human-resource-white">
-                <td class="border px-4 py-2 text-center">1</td>
-                <td class="border px-4 py-2 text-center">Enrique Sanchez</td>
-                <td
-                  class="status-approved border px-4 py-2 text-center font-bold text-green-500"
-                >
-                  Passed
-                </td>
-                <td
-                  class="status-pending border px-4 py-2 text-center font-bold text-yellow-500"
-                >
-                  In Progress
-                </td>
-                <td class="border px-4 py-2 text-center text-gray-400">
-                  Scheduled
-                </td>
-                <td
-                  class="status-pending border px-4 py-2 text-center text-gray-400"
-                >
-                  Pending
-                </td>
-              </tr>
-              <!-- Additional rows for other applicants -->
+<!------------------------------------------------------------------------------------------------------------------------------>                 
+<?php
+      displayApplicant_progress($connection);
+?>              
+<!------------------------------------------------------------------------------------------------------------------------------>    
             </tbody>
           </table>
         </div>
@@ -284,7 +395,11 @@
           >
             <h3 class="mb-2 text-lg font-semibold">Shortlisted Candidates</h3>
             <ul id="shortlistedCandidates" class="list-inside list-disc">
-              <li>Enrique Sanchez</li>
+<!------------------------------------------------------------------------------------------------------------------------------>                 
+<?php
+      displayApplicant_shortlisted($connection);
+?>              
+<!------------------------------------------------------------------------------------------------------------------------------> 
             </ul>
           </div>
         </div>

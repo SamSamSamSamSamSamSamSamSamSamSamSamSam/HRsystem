@@ -91,20 +91,25 @@
           <a href="/build/06Analytics/report.php">Analytics</a>
         </li>
       </ul>
-      <?php include_once '../../php/sidebar-and-search.php'; ?>
+      <form action="../../php/includes/employee.inc.php" method="post">  
+      <?php 
+            include_once '../../php/sidebar-and-search.php'; 
+            include_once '../../php/includes/dbconn.inc.php';
+            require_once '../../php/includes/functions.inc.php';
+      ?>
 
     <!-- Content -->
     <main>
       <!-- Table -->
+    <div class="table-wrapper">  
+      <center><h3 class="mb-2 text-lg font-semibold">Monthly Payroll Information</h3></center>
       <table class="payroll-table">
         <thead>
           <tr>
             <th>Employee ID</th>
             <th>Employee Name</th>
-            <th>Period Start</th>
-            <th>Period End</th>
-            <th>Regular Hours</th>
-            <th>Overtime Hours</th>
+            <th>Total Regular Hours</th>
+            <th>Total Overtime Hours</th>
             <th>Regular Pay Rate</th>
             <th>Overtime Pay Rate</th>
             <th>Regular Pay</th>
@@ -113,87 +118,18 @@
             <th>Deductions</th>
             <th>Net Pay</th>
             <th>Pay Date</th>
-            <th>Pay Method</th>
-            <th>Status</th>
+            <th>Preferred Pay Method</th>
           </tr>
         </thead>
         <!-- Table contents -->
         <tbody>
-          <tr class="payroll-row">
-            <td class="employee-id">2984</td>
-            <td class="employee-name">Joseph Brody</td>
-            <td><time datetime="2023-03-01">3/1/2023</time></td>
-            <td><time datetime="2023-03-15">3/15/2023</time></td>
-            <td>80</td>
-            <td>10</td>
-            <td>PHP200.00</td>
-            <td>PHP300.00</td>
-            <td>PHP16,000.00</td>
-            <td>PHP3,000.00</td>
-            <td>PHP19,000.00</td>
-            <td>PHP4,000.00</td>
-            <td>PHP15,000.00</td>
-            <td><time datetime="2023-03-20">3/20/2023</time></td>
-            <td>Direct Deposit</td>
-            <td class="status-approved">Paid</td>
-          </tr>
-          <tr class="payroll-row">
-            <td class="employee-id">3580</td>
-            <td class="employee-name">John Doe</td>
-            <td><time datetime="2023-03-01">3/1/2023</time></td>
-            <td><time datetime="2023-03-15">3/15/2023</time></td>
-            <td>75</td>
-            <td>5</td>
-            <td>PHP180.00</td>
-            <td>PHP270.00</td>
-            <td>PHP13,500.00</td>
-            <td>PHP1,350.00</td>
-            <td>PHP14,850.00</td>
-            <td>PHP3,000.00</td>
-            <td>PHP11,850.00</td>
-            <td><time datetime="2023-03-20">3/20/2023</time></td>
-            <td>Check</td>
-            <td class="status-approved">Paid</td>
-          </tr>
-          <tr class="payroll-row">
-            <td class="employee-id">4800</td>
-            <td class="employee-name">Bob Johnson</td>
-            <td><time datetime="2023-03-01">3/1/2023</time></td>
-            <td><time datetime="2023-03-15">3/15/2023</time></td>
-            <td>70</td>
-            <td>15</td>
-            <td>PHP220.00</td>
-            <td>PHP330.00</td>
-            <td>PHP15,400.00</td>
-            <td>PHP4,950.00</td>
-            <td>PHP20,350.00</td>
-            <td>PHP3,500.00</td>
-            <td>PHP16,850.00</td>
-            <td><time datetime="2023-03-20">3/20/2023</time></td>
-            <td>Direct Deposit</td>
-            <td class="status-approved">Paid</td>
-          </tr>
-          <tr class="payroll-row">
-            <td class="employee-id">8909</td>
-            <td class="employee-name">Samantha Lee</td>
-            <td><time datetime="2023-03-01">3/1/2023</time></td>
-            <td><time datetime="2023-03-15">3/15/2023</time></td>
-            <td>85</td>
-            <td>20</td>
-            <td>PHP250.00</td>
-            <td>PHP370.50</td>
-            <td>PHP21,250.00</td>
-            <td>PHP7,500.00</td>
-            <td>PHP28,750.00</td>
-            <td>PHP4,000.00</td>
-            <td>PHP24,750.00</td>
-            <td><time datetime="2023-03-20">3/20/2023</time></td>
-            <td>Check</td>
-            <td class="status-approved">Paid</td>
-          </tr>
+          <?php
+            displayPayroll($connection);
+          ?>
         </tbody>
         <!-- End of Table Contents -->
       </table>
+    </div>  
       <!-- End of Table -->
     </main>
     <!-- End of Content -->

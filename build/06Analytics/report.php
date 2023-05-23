@@ -94,7 +94,10 @@
           <a href="/build/06Analytics/report.php" class="active">Analytics</a>
         </li>
       </ul>
-      <?php include_once '../../php/sidebar-and-search.php'; ?>
+      <form action="../../php/includes/employee.inc.php" method="post">  
+      <?php 
+        include_once '../../php/sidebar-and-search.php'; 
+      ?>
 
     <!-- Contents -->
     <main class="grid place-content-center">

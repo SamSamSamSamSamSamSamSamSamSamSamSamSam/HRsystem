@@ -1,14 +1,16 @@
-      <div class="search-login">
-        <div class="search-bar ring-2 ring-human-resource-gray">
-          <input
-            type="text"
-            placeholder="search for an employee...."
-            class="search focus:outline-none"
-          />
-          <button><i class="bx bx-search-alt"></i></button>
+        <div class="search-login">
+            <div class="search-bar ring-2 ring-human-resource-gray">
+                <input
+                  type="text"
+                  name="search-record"
+                  placeholder="search for an employee...."
+                  class="search focus:outline-none"
+                />
+                <button name="search-selection" value="all" ><i class="bx bx-search-alt"></i></button>
+            </div>
+          <a href="/build/002Login Page/login.php" class="sign-in">logout</a>
         </div>
-        <a href="/build/002Login Page/login.php" class="sign-in">logout</a>
-      </div>
+      </form>
     </nav>
     <!-- End of Navigation Bar -->
 

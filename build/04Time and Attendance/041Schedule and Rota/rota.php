@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="refresh" content="4680" />
     <title>Schedule and Rota</title>
+    <link href="rota.css" rel="stylesheet" />
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/build/00Image/favicon.ico" />
     <!-- Cascading Style Sheet -->
@@ -94,7 +95,12 @@
           <a href="/build/06Analytics/report.php">Analytics</a>
         </li>
       </ul>
-      <?php include_once '../../../php/sidebar-and-search.php'; ?>
+      <form action="../../../php/includes/employee.inc.php" method="post">  
+      <?php 
+        include_once '../../../php/sidebar-and-search.php'; 
+        require_once '../../../php/includes/dbconn.inc.php';
+        require_once '../../../php/includes/functions.inc.php';
+      ?>
 
     <!-- Content -->
     <main>
@@ -120,102 +126,135 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="border-b border-human-resource-white">
-              <td class="py-16 text-center">Joseph Cruz</td>
-              <td class="text-center">Monday, Wednesday, Friday</td>
-              <td class="text-center">09:00 - 17:00</td>
-            </tr>
-            <tr class="border-b border-human-resource-white">
-              <td class="py-16 text-center">Roland Dumlao</td>
-              <td class="text-center">Tuesday, Thursday</td>
-              <td class="text-center">13:00 - 21:00</td>
-            </tr>
-            <tr class="border-b border-human-resource-white">
-              <td class="py-16 text-center">Michael Johnson</td>
-              <td class="text-center">Monday - Friday</td>
-              <td class="text-center">09:00 - 17:00</td>
-            </tr>
-            <tr class="border-b border-human-resource-white">
-              <td class="py-16 text-center">Guy Malano</td>
-              <td class="text-center">Friday</td>
-              <td class="text-center">18:00 - 02:00</td>
-            </tr>
+<!--------------------------------------------------------------------------------------------------------------------------------->
+            <?php
+              displayShiftRotation($connection);
+            ?>
+<!--------------------------------------------------------------------------------------------------------------------------------->            
           </tbody>
         </table>
         <table id="shiftAssignments" class="w-full border-collapse">
-          <!-- Shift assignment data goes here -->
+          <!-- Shift assignment data goes here -->    
         </table>
-
-        <h3 class="mb-2 text-lg font-semibold">Create Shift Assignment</h3>
-        <form
-          id="createShiftAssignmentForm"
-          class="mx-auto w-full max-w-md rounded-xl bg-human-resource-white p-4"
-        >
-          <div class="mb-4">
-            <label
-              for="employeeName"
-              class="mb-2 block font-semibold text-human-resource-blue"
-              >Employee ID:</label
-            >
-            <input
-              type="text"
-              id="employeeName"
-              name="employeeName"
-              required
-              class="w-full rounded border border-gray-300 px-3 py-2 text-center focus:border-indigo-500 focus:outline-none"
-            />
-          </div>
-
-          <div class="mb-4">
-            <label
-              for="shiftStartTime"
-              class="mb-2 block font-semibold text-human-resource-blue"
-              >Shift Start Time:</label
-            >
-            <input
-              type="time"
-              id="shiftStartTime"
-              name="shiftStartTime"
-              required
-              class="w-full rounded border border-gray-300 px-3 py-2 text-center focus:border-indigo-500 focus:outline-none"
-            />
-          </div>
-
-          <div class="mb-4">
-            <label
-              for="shiftEndTime"
-              class="mb-2 block font-semibold text-human-resource-blue"
-              >Shift End Time:</label
-            >
-            <input
-              type="time"
-              id="shiftEndTime"
-              name="shiftEndTime"
-              required
-              class="w-full rounded border border-gray-300 px-3 py-2 text-center focus:border-indigo-500 focus:outline-none"
-            />
-          </div>
-
-          <div class="mb-4">
-            <label
-              for="shiftNotes"
-              class="mb-2 block font-semibold text-human-resource-blue"
-              >Shift Notes:</label
-            >
-            <textarea
-              id="shiftNotes"
-              name="shiftNotes"
-              class="w-full rounded border border-gray-300 px-3 py-2 text-center focus:border-indigo-500 focus:outline-none"
-            ></textarea>
-          </div>
-
-          <button
-            type="submit"
-            class="rounded bg-human-resource-blue px-4 py-2 font-semibold text-white hover:bg-indigo-700"
+<!---------------------------------------------------------------------------------------------------------------------------------> 
+      <div class="form-container">
+        <div class="f-l form-wrapper">        
+          <h3 class="mb-2 text-lg font-semibold">Employee Shift Assignment</h3>
+          <form
+            id="createShiftAssignmentForm" action="../../../php/includes/rota.inc.php" method="post"
+            class="mx-auto w-full max-w-md rounded-xl bg-human-resource-white p-4"
           >
-            Create
-          </button>
-        </form>
+            <div class="mb-4">
+              <label
+                for="employeeID"
+                class="mb-2 block font-semibold text-human-resource-blue"
+                >Employee ID:</label
+              >
+              <input
+                type="text"
+                id="employeeName"
+                name="employeeID"
+                required
+                class="w-full rounded border border-gray-300 px-3 py-2 text-center focus:border-indigo-500 focus:outline-none"
+              />
+            </div>
+            <div class="mb-4">
+              <label
+                  for="shiftName"
+                  class="mb-2 block font-semibold text-human-resource-blue"
+                  >Shift name:</label
+                >
+              <select onchange="updateTextBox(this)" name="shiftID" 
+                class="align-self-center rounded-md border border-gray-400 px-4 py-2 text-human-resource-blue">
+                <?php
+                  shiftOptions($connection);
+                ?>
+              </select>
+            </div>
+            <button
+              type="submit" name="submit-assign"
+              class="rounded bg-human-resource-blue px-4 py-2 font-semibold text-white hover:bg-indigo-700"
+            >
+              Request
+            </button>
+          </form>
+        </div><br>
+<!--------------------------------------------------------------------------------------------------------------------------------->
+        <div class="f-l form-wrapper"> 
+          <h3 class="mb-2 text-lg font-semibold">Create Shift Assignment</h3>
+          <form
+            id="createShiftAssignmentForm" action="../../../php/includes/rota.inc.php" method="post"
+            class="mx-auto w-full max-w-md rounded-xl bg-human-resource-white p-4"
+          >
+
+            <div class="mb-4">
+              <label
+                for="shiftName"
+                class="mb-2 block font-semibold text-human-resource-blue"
+                >Shift Name:</label
+              >
+              <input
+                type="text"
+                id="shiftName"
+                name="shiftName"
+                required
+                class="w-full rounded border border-gray-300 px-3 py-2 text-center focus:border-indigo-500 focus:outline-none"
+              />
+            </div>
+            
+            <div class="mb-4">
+              <label
+                for="shiftStartTime"
+                class="mb-2 block font-semibold text-human-resource-blue"
+                >Shift Start Time:</label
+              >
+              <input
+                type="time"
+                id="shiftStartTime"
+                name="shiftStartTime"
+                required
+                class="w-full rounded border border-gray-300 px-3 py-2 text-center focus:border-indigo-500 focus:outline-none"
+              />
+            </div>
+
+            <div class="mb-4">
+              <label
+                for="shiftEndTime"
+                class="mb-2 block font-semibold text-human-resource-blue"
+                >Shift End Time:</label
+              >
+              <input
+                type="time"
+                id="shiftEndTime"
+                name="shiftEndTime"
+                required
+                class="w-full rounded border border-gray-300 px-3 py-2 text-center focus:border-indigo-500 focus:outline-none"
+              />
+            </div>
+
+            <div class="mb-4">
+              <label
+                for="shiftDays"
+                class="mb-2 block font-semibold text-human-resource-blue"
+                >Shift Days:</label
+              >
+              <textarea
+                id="shiftNotes"
+                name="shiftDays"
+                required
+                class="w-full rounded border border-gray-300 px-3 py-2 text-center focus:border-indigo-500 focus:outline-none"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit" name="submit-shift"
+              class="rounded bg-human-resource-blue px-4 py-2 font-semibold text-white hover:bg-indigo-700"
+            >
+              Create
+            </button>
+          </form>
+        </div>  
+      </div>      
       </section>
 
       <!-- Shift Request -->
@@ -237,47 +276,11 @@
             </tr>
           </thead>
           <tbody>
-            <!-- Shift request/swap data goes here -->
-            <tr class="rota-row">
-              <td class="border-b px-4 py-2 text-center">Joseph Cruz</td>
-              <td class="border-b px-4 py-2 text-center">Morning Shift</td>
-              <td class="border-b px-4 py-2 text-center">Afternoon Shift</td>
-              <td class="status-cell border-b px-4 py-2 text-center">
-                Pending
-              </td>
-              <td class="actions-cell border-b px-4 py-2 text-center">
-                <button
-                  class="approve-button mx-auto rounded bg-green-500 px-2 py-1 font-semibold text-white hover:bg-green-600"
-                >
-                  Approve
-                </button>
-                <button
-                  class="deny-button mx-auto rounded bg-red-500 px-2 py-1 font-semibold text-white hover:bg-red-600"
-                >
-                  Reject
-                </button>
-              </td>
-            </tr>
-            <tr class="rota-row">
-              <td class="border-b px-4 py-2 text-center">Roland Dumlao</td>
-              <td class="border-b px-4 py-2 text-center">Evening Shift</td>
-              <td class="border-b px-4 py-2 text-center">Night Shift</td>
-              <td class="status-cell border-b px-4 py-2 text-center">
-                Pending
-              </td>
-              <td class="actions-cell border-b px-4 py-2 text-center">
-                <button
-                  class="approve-button rounded bg-green-500 px-2 py-1 font-semibold text-white hover:bg-green-600"
-                >
-                  Approve
-                </button>
-                <button
-                  class="deny-button rounded bg-red-500 px-2 py-1 font-semibold text-white hover:bg-red-600"
-                >
-                  Reject
-                </button>
-              </td>
-            </tr>
+<!--------------------------------------------------------------------------------------------------------------------------------->
+            <?php
+               displayShiftRequest($connection);   
+            ?>
+<!--------------------------------------------------------------------------------------------------------------------------------->          
           </tbody>
         </table>
       </section>

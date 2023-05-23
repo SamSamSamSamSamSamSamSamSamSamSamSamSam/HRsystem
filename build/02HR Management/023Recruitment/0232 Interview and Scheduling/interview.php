@@ -95,85 +95,12 @@
           <a href="/build/06Analytics/report.php">Analytics</a>
         </li>
       </ul>
-      <div class="search-login">
-        <div class="search-bar ring-2 ring-human-resource-gray">
-          <input
-            type="text"
-            placeholder="search for an employee...."
-            class="search focus:outline-none"
-          />
-          <button><i class="bx bx-search-alt"></i></button>
-        </div>
-        <a href="/build/002Login Page/login.php" class="sign-in">logout</a>
-      </div>
-    </nav>
-    <!-- End of Navigation Bar -->
-
-    <!-- Sidebar -->
-    <aside class="sidebar text-human-resource-blue">
-      <!-- Links -->
-      <ul class="sidebar-links">
-        <li>
-          <a class="plusAdm"
-            >administration
-            <button><i class="gg-math-plus"></i></button>
-            <ul class="drp-dn-menuAdm">
-              <li>
-                <a href="/build/02HR Management/023Recruitment/rlm.php"
-                  >Recruitment</a
-                >
-              </li>
-              <li>
-                <a href="/build/02HR Management/024Performances/perm.php"
-                  >Performance</a
-                >
-              </li>
-              <li>
-                <a href="/build/02HR Management/025Employees/employee.php"
-                  >Employees</a
-                >
-              </li>
-            </ul></a
-          >
-        </li>
-
-        <li>
-          <a class="plusAtt"
-            >time and attendance
-            <button><i class="gg-math-plus"></i></button>
-            <ul class="drp-dn-menuAtt">
-              <li>
-                <a
-                  href="/build/04Time and Attendance/041Schedule and Rota/rota.php"
-                  >Schedule and Rota</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/build/04Time and Attendance/042Absences and Leave/leave.php"
-                  >Abscences and Leave</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/build/04Time and Attendance/043Grievance Handling/grief.php"
-                  >Grievance Handling</a
-                >
-              </li>
-            </ul></a
-          >
-        </li>
-
-        <li><a href="/build/03Payroll/payroll.php">payroll</a></li>
-        <li><a href="/build/05Benefits/benefits.php">benefits</a></li>
-        <li><a href="/build/06Analytics/report.php">analytics</a></li>
-      </ul>
-      <!-- Search and Login -->
-      <div class="sidebar-login">
-        <a href="" class="login">sign out</a>
-      </div>
-    </aside>
-    <!-- End of Sidebar -->
+      <form action="../../../../php/includes/employee.inc.php" method="post">  
+      <?php
+            include_once '../../../../php/sidebar-and-search.php';  
+            require_once '../../../../php/includes/dbconn.inc.php';  
+            require_once '../../../../php/includes/functions.inc.php';
+      ?>
 
     <!-- Content -->
     <main class="m-4 text-human-resource-white">
@@ -188,7 +115,9 @@
           class="rounded-md bg-gray-100 p-4 text-human-resource-blue"
         >
           <h3 class="mb-4 text-xl font-bold">Schedule Interviews</h3>
-          <form id="interviewSchedulingForm" class="flex flex-col gap-4">
+<!----------------------------------------------------------------------------------------------------------------------------------->               
+          <form action="../../../../php/includes/interview.inc.php" method="post"
+            id="interviewSchedulingForm" class="flex flex-col gap-4" >
             <label for="candidateName" class="font-medium"
               >Candidate Name</label
             >
@@ -234,12 +163,13 @@
             />
 
             <button
-              type="submit"
+              type="submit" name="submit-schedule"
               class="btnS mx-auto mt-4 rounded-md px-4 py-2 font-bold text-human-resource-white"
             >
               Schedule Interview
             </button>
           </form>
+<!----------------------------------------------------------------------------------------------------------------------------------->          
         </div>
         <table id="scheduledInterviews" class="my-4 w-full border-collapse">
           <thead>
@@ -272,55 +202,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="border border-gray-300 px-4 py-2 text-center">
-                Enrique Sanchez
-              </td>
-              <td class="border border-gray-300 px-4 py-2 text-center">
-                3/20/2023
-              </td>
-              <td class="border border-gray-300 px-4 py-2 text-center">
-                10:00 AM
-              </td>
-              <td class="border border-gray-300 px-4 py-2 text-center">
-                Office Room 101
-              </td>
-              <td class="border border-gray-300 px-4 py-2 text-center">
-                Scheduled
-              </td>
-            </tr>
-            <!-- Additional rows for other scheduled interviews -->
+<!----------------------------------------------------------------------------------------------------------------------------------->
+<?php
+          displayInterview_schedules($connection);
+?>
+<!----------------------------------------------------------------------------------------------------------------------------------->    
           </tbody>
         </table>
       </section>
     </main>
     <!-- End of Content -->
 
-    <!-- Footer -->
-    <footer class="end-page">
-      <div class="copyright">@2023 Human Resouce System</div>
-      <div class="n-end">
-        About
-        <div class="n-info">
-          <hr />
-          <p>A basic project of a Human Resource Systems.</p>
-        </div>
-      </div>
-      <div class="n-end">
-        Contact Us
-        <div class="n-info">
-          <hr />
-          <section class="info">Japeth Guzon : 09954014922</section>
-          <hr />
-          <section class="info">Sailor Sam Pacaldo : 09954014922</section>
-          <hr />
-          <section class="info">Kyle Llaguno : 09954014922</section>
-          <hr />
-        </div>
-      </div>
-    </footer>
-    <!-- End of Footer -->
-
+    <?php include_once '../../../../php/footer.php'; ?>
     <!-- JavaScript -->
     <script src="interview.js"></script>
     <script src="/build/js/bars.js"></script>

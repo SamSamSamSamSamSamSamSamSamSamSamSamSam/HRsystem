@@ -95,17 +95,20 @@
           <a href="/build/06Analytics/report.php">Analytics</a>
         </li>
       </ul>
+      <form action="../../../php/includes/employee.inc.php" method="post">  
       <?php include_once '../../../php/sidebar-and-search.php'; ?>
 
     <main class="text-human-resource-blue">
       <section class="box-contain">
+<!-------------------------------------------------------------------------------------------------------------------------------------------->        
         <div class="container">
           <h1
             class="m-8 py-8 text-center text-3xl font-bold text-human-resource-white"
           >
             Reviews
           </h1>
-          <form class="mx-auto max-w-md rounded-lg bg-white p-6 shadow-md">
+          <form action="../../../php/includes/perm.inc.php" method="post"
+            class="mx-auto max-w-md rounded-lg bg-white p-6 shadow-md">
             <label for="review-period" class="mb-2 block font-semibold"
               >Employee ID:</label
             >
@@ -113,6 +116,7 @@
               type="text"
               id="employee-id"
               name="employee-id"
+              required
               class="mb-4 w-full rounded-lg border-gray-300 px-4 py-2 ring-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
             />
 
@@ -123,6 +127,7 @@
               type="text"
               id="employee-name"
               name="employee-name"
+              required
               class="mb-4 w-full rounded-lg border-gray-300 px-4 py-2 ring-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
             />
 
@@ -133,6 +138,7 @@
               type="text"
               id="review-period"
               name="review-period"
+              required
               class="mb-4 w-full rounded-lg border-gray-300 px-4 py-2 ring-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
             />
 
@@ -143,6 +149,7 @@
               type="text"
               id="reviewer"
               name="reviewer"
+              required
               class="mb-4 w-full rounded-lg border-gray-300 px-4 py-2 ring-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
             />
 
@@ -153,25 +160,27 @@
               type="text"
               id="progress"
               name="progress"
+              required
               class="mb-4 w-full rounded-lg border-gray-300 px-4 py-2 ring-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
             />
 
             <button
-              type="submit"
+              type="submit" name="submit_reviews"
               class="focus:shadow-outline submit-btn rounded px-4 py-2 font-bold text-human-resource-white focus:outline-none"
             >
               Submit
             </button>
           </form>
         </div>
-
+<!------------------------------------------------------------------------------------------------------------------------------------------------>
         <div class="container">
           <h1
             class="m-8 py-8 text-center text-3xl font-bold text-human-resource-white"
           >
             Goals
           </h1>
-          <form class="mx-auto max-w-md rounded-lg bg-white p-6 shadow-md">
+          <form action="../../../php/includes/perm.inc.php" method="post"
+            class="mx-auto max-w-md rounded-lg bg-white p-6 shadow-md">
             <label for="review-period" class="mb-2 block font-semibold"
               >Employee ID:</label
             >
@@ -179,6 +188,7 @@
               type="text"
               id="employee-id"
               name="employee-id"
+              required
               class="mb-4 w-full rounded-lg border-gray-300 px-4 py-2 ring-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
             />
 
@@ -189,6 +199,7 @@
               type="text"
               id="employee-name"
               name="employee-name"
+              required
               class="mb-4 w-full rounded-lg border-gray-300 px-4 py-2 ring-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
             />
 
@@ -198,6 +209,7 @@
             <textarea
               id="smart-goals"
               name="smart-goals"
+              required
               class="mb-4 w-full rounded-lg border-gray-300 px-4 py-2 ring-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
             ></textarea>
 
@@ -208,6 +220,7 @@
               type="text"
               id="goal-progress"
               name="goal-progress"
+              required
               class="mb-4 w-full rounded-lg border-gray-300 px-4 py-2 ring-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
             />
 
@@ -217,25 +230,27 @@
             <textarea
               id="feedback"
               name="feedback"
+              required
               class="mb-4 w-full rounded-lg border-gray-300 px-4 py-2 ring-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
             ></textarea>
 
             <button
-              type="submit"
+              type="submit" name="submit_goals"
               class="focus:shadow-outline submit-btn rounded px-4 py-2 font-bold text-human-resource-white focus:outline-none"
             >
               Submit
             </button>
           </form>
         </div>
-
+<!----------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="container">
           <h1
             class="m-8 py-8 text-center text-3xl font-bold text-human-resource-white"
           >
             Feedback
           </h1>
-          <form class="mx-auto max-w-md rounded-lg bg-white p-6 shadow-md">
+          <form action="../../../php/includes/perm.inc.php" method="post"
+            class="mx-auto max-w-md rounded-lg bg-white p-6 shadow-md">
             <label for="review-period" class="mb-2 block font-semibold"
               >Employee ID:</label
             >
@@ -243,6 +258,7 @@
               type="text"
               id="employee-id"
               name="employee-id"
+              required
               class="mb-4 w-full rounded-lg border-gray-300 px-4 py-2 ring-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
             />
 
@@ -253,6 +269,7 @@
               type="text"
               id="employee-name"
               name="employee-name"
+              required
               class="mb-4 w-full rounded-lg border-gray-300 px-4 py-2 ring-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
             />
 
@@ -262,25 +279,27 @@
             <textarea
               id="performance-feedback"
               name="performance-feedback"
+              required
               class="mb-4 w-full rounded-lg border-gray-300 px-4 py-2 ring-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
             ></textarea>
 
             <button
-              type="submit"
+              type="submit" name="submit_feedback"
               class="focus:shadow-outline submit-btn rounded px-4 py-2 font-bold text-human-resource-white focus:outline-none"
             >
               Submit
             </button>
           </form>
         </div>
-
+<!------------------------------------------------------------------------------------------------------------------------------------------------>
         <div class="container">
           <h1
             class="m-8 py-8 text-center text-3xl font-bold text-human-resource-white"
           >
             Improvement Plans
           </h1>
-          <form class="mx-auto max-w-md rounded-lg bg-white p-6 shadow-md">
+          <form action="../../../php/includes/perm.inc.php" method="post"
+            class="mx-auto max-w-md rounded-lg bg-white p-6 shadow-md">
             <label for="review-period" class="mb-2 block font-semibold"
               >Employee ID:</label
             >
@@ -288,6 +307,7 @@
               type="text"
               id="employee-id"
               name="employee-id"
+              required
               class="mb-4 w-full rounded-lg border-gray-300 px-4 py-2 ring-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
             />
 
@@ -298,6 +318,7 @@
               type="text"
               id="employee-name"
               name="employee-name"
+              required
               class="mb-4 w-full rounded-lg border-gray-300 px-4 py-2 ring-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
             />
 
@@ -307,6 +328,7 @@
             <textarea
               id="improvement-goals"
               name="improvement-goals"
+              required
               class="mb-4 w-full rounded-lg border-gray-300 px-4 py-2 ring-2 focus:border-indigo-500 focus:ring-indigo-200"
             ></textarea>
 
@@ -317,6 +339,7 @@
               type="text"
               id="progress-tracking"
               name="progress-tracking"
+              required
               class="mb-4 w-full rounded-lg border-gray-300 px-4 py-2 ring-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
             />
 
@@ -326,11 +349,12 @@
             <textarea
               id="support-documentation"
               name="support-documentation"
+              required
               class="mb-4 w-full rounded-lg border-gray-300 px-4 py-2 ring-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
             ></textarea>
 
             <button
-              type="submit"
+              type="submit" name="submit_impove"
               class="focus:shadow-outline submit-btn rounded px-4 py-2 font-bold text-human-resource-white focus:outline-none"
             >
               Submit

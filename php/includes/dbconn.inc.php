@@ -6,7 +6,7 @@
     $host_name = "localhost";
     $username = "root";
     $password = "";
-    $dataBase_name = "human_resource_system_ver2"; // database name, change if different database in used
+    $dataBase_name = "webdev_hrsys_database"; // database name, change if different database in used
 
 /*---------------------------------------------------------------------------------------------------------------------------
     $connection holds the mysqli_connect();, inlcude in other php files to connect in the database

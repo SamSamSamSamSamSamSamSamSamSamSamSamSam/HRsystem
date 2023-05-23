@@ -1,0 +1,13 @@
+.f-l
+{
+    float: left;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+}
+
+.form-wrapper {
+    margin-right: 100px;
+}

@@ -85,16 +85,16 @@
         echo "<br><p class='error-msg'>Please enter username and password!</p>";
         break;
       case "dbisempty":
-        echo "<br><p class='error-msg'>Please enter username and password!</p>";
+        echo "<br><p class='error-msg'>Table currently has no data!</p>";
         break;
       case "dbconnfailed":
-        echo "<br><p class='error-msg'>Please enter username and password!</p>";
+        echo "<br><p class='error-msg'>Error: Database query failed!</p>";
         break;
       case "usernotfound":
-        echo "<br><p class='error-msg'>Please enter username and password!</p>";
+        echo "<br><p class='error-msg'>Account is not registered!</p>";
         break;
       case "wrongpass":
-        echo "<br><p class='error-msg'>Please enter username and password!</p>";
+        echo "<br><p class='error-msg'>Incorrect password!</p>";
         break;
       default:
         break;

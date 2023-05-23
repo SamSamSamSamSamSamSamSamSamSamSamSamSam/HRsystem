@@ -142,3 +142,8 @@ footer_sections.forEach((footer_section) => {
     });
   });
 });
+
+function updateTextBox(selectElement) {
+  var selectedOption = selectElement.value;
+  document.getElementById('textBox').value = selectedOption;
+}

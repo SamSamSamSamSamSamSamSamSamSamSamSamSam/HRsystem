@@ -94,6 +94,7 @@
           <a href="/build/06Analytics/report.php">Analytics</a>
         </li>
       </ul>
+      <form action="../../../php/includes/employee.inc.php" method="post">  
       <?php include_once '../../../php/sidebar-and-search.php'; ?>
 
     <!-- Content -->
