@@ -378,7 +378,17 @@
         class="mx-auto max-w-2xl rounded-md bg-human-resource-white p-4 text-human-resource-blue"
       >
         <?php
-          displayEmployee_personalInfo($connection, 1);
+          $default = 0;
+          if ( isset($_GET['input'])) {
+              $inputval = (int)$_GET['input'];
+              $sql = "SELECT * FROM employees WHERE eID = $inputval;";
+              $result = mysqli_query($connection, $sql);
+              if (mysqli_num_rows($result)>0) {
+                $row = mysqli_fetch_assoc($result);
+                $default = $row['eID'];
+              }
+          }
+          displayEmployee_personalInfo($connection, $default);
         ?>
       </div>
 
@@ -387,34 +397,36 @@
       <h2 class="mt-8 text-center text-xl font-bold">Employee Actions</h2>
 
       <!-- This button will make all of those who requested to leave to be approved -->
-      <div class="mx-auto mt-8 flex max-w-2xl gap-4">
-        <button
-          class="employee-actions m-4 rounded-md bg-human-resource-white px-4 py-2 font-bold text-human-resource-blue"
-        >
-          Initiate Leave Request
-        </button>
+      <form action="../../../php/includes/links.php" method="post">
+        <div class="mx-auto mt-8 flex max-w-2xl gap-4">
+          <button name="leave"
+            class="employee-actions m-4 rounded-md bg-human-resource-white px-4 py-2 font-bold text-human-resource-blue"
+          >
+            Initiate Leave Request
+          </button>
 
-        <!-- This button will check all of those who has the employee benefits -->
-        <button
-          class="employee-actions m-4 rounded-md bg-human-resource-white px-4 py-2 font-bold text-human-resource-blue"
-        >
-          Manage Employee Benefits
-        </button>
+          <!-- This button will check all of those who has the employee benefits -->
+          <button name="bens"
+            class="employee-actions m-4 rounded-md bg-human-resource-white px-4 py-2 font-bold text-human-resource-blue"
+          >
+            Manage Employee Benefits
+          </button>
 
-        <!-- When this button is clicked, it will be then asked whose user should be updated. Only those who have searched will appear here -->
-        <button
-          class="employee-actions m-4 rounded-md bg-human-resource-white px-4 py-2 font-bold text-human-resource-blue"
-        >
-          Update Employee Information
-        </button>
+          <!-- When this button is clicked, it will be then asked whose user should be updated. Only those who have searched will appear here -->
+          <button name="update"
+            class="employee-actions m-4 rounded-md bg-human-resource-white px-4 py-2 font-bold text-human-resource-blue"
+          >
+            Update Employee Information
+          </button>
 
-        <!-- This will update the Analytics tab in accordance to the employees -->
-        <button
-          class="employee-actions m-4 rounded-md bg-human-resource-white px-4 py-2 font-bold text-human-resource-blue"
-        >
-          Generate Reports
-        </button>
-      </div>
+          <!-- This will update the Analytics tab in accordance to the employees -->
+          <button name="reports"
+            class="employee-actions m-4 rounded-md bg-human-resource-white px-4 py-2 font-bold text-human-resource-blue"
+          >
+             Generate Reports
+          </button>
+        </div>
+      </form>
     </main>
     <!-- End of Content -->
 

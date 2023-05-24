@@ -96,7 +96,9 @@
       </ul>
       <form action="../../php/includes/employee.inc.php" method="post">  
       <?php 
-        include_once '../../php/sidebar-and-search.php'; 
+          include_once '../../php/sidebar-and-search.php'; 
+          require_once '../../php/includes/dbconn.inc.php';
+          require_once '../../php/includes/functions.inc.php';
       ?>
 
     <!-- Contents -->
@@ -112,13 +114,14 @@
           <h2 class="mb-4 text-center text-2xl font-bold text-gray-800">
             Employee Demographics
           </h2>
-          <p class="mb-2 text-lg text-gray-800">Median Age: 30</p>
-          <p class="mb-2 text-lg text-gray-800">Gender:</p>
-          <p class="mx-8 text-lg text-gray-800">Male - 45%</p>
-          <p class="mx-8 text-lg text-gray-800">Female - 55%</p>
-          <p class="mb-2 text-lg text-gray-800">Nationality:</p>
-          <p class="mx-8 text-lg text-gray-800">Filipino - 95%</p>
-          <p class="mx-8 text-lg text-gray-800">Other - 5%</p>
+          <?php
+            echo"
+            <p class='mb-2 text-lg text-gray-800'>Median Age: ". number_format(demographics_agemedian($connection), 2, ".", ",") ."</p>
+            <p class='mb-2 text-lg text-gray-800'>Gender:</p>";
+            demographics_gender($connection);
+            echo"<p class='mb-2 text-lg text-gray-800'>Nationality:</p>";
+            demographics_nationality($connection);
+          ?>
         </div>
         <div id="recruitment-metrics" class="mb-8 rounded-lg bg-white p-8">
           <h2 class="mb-4 text-center text-2xl font-bold text-gray-800">
@@ -235,9 +238,9 @@
             <h3 class="mb-2 text-center text-lg font-semibold">
               Average Salary
             </h3>
-            <p class="text-gray-600">
-              This chart shows the average salary of employees.
-            </p>
+            <?php
+              displayAverageSalary($connection);
+            ?>
             <div class="mt-4">
               <canvas id="averageSalaryChart" width="400" height="300"></canvas>
             </div>

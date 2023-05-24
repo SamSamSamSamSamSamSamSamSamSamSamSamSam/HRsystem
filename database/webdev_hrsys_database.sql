@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2023 at 03:14 PM
+-- Generation Time: May 24, 2023 at 09:04 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -101,7 +101,7 @@ CREATE TABLE `benefit_plans` (
   `benID` int(11) NOT NULL,
   `planName` varchar(255) NOT NULL,
   `planType` varchar(255) NOT NULL,
-  `coverage` varchar(255) NOT NULL,
+  `coverage` int(255) NOT NULL,
   `deductible` int(255) NOT NULL,
   `premium` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -111,9 +111,9 @@ CREATE TABLE `benefit_plans` (
 --
 
 INSERT INTO `benefit_plans` (`benID`, `planName`, `planType`, `coverage`, `deductible`, `premium`) VALUES
-(1, 'Yearly Health Dental Insurance', 'Health', 'All Regular Employees', 2500, 0),
-(2, 'Yearly Paid Vacation', 'PTO', 'Lottery: Managerial Positions', 4500, 1),
-(3, 'Retirement Funds', 'Retirement', 'All Regular Employees working for 10+ years', 5000, 0);
+(1, 'Yearly Health Dental Insurance', 'Health', 60, 2500, 0),
+(2, 'Yearly Paid Vacation', 'PTO', 70, 4500, 1),
+(3, 'Retirement Funds', 'Retirement', 90, 5000, 0);
 
 -- --------------------------------------------------------
 
@@ -137,7 +137,7 @@ CREATE TABLE `compensations_benefits` (
 --
 
 INSERT INTO `compensations_benefits` (`cbID`, `cb_eID`, `cb_benID`, `wageRph`, `rgwHrs`, `otwHrs`, `deductions`, `payMethod`) VALUES
-(1, 1, 1, 500, 80, 5, 2500, 'Cash'),
+(1, 1, 2, 500, 80, 5, 2500, 'Cash'),
 (2, 2, 1, 700, 104, 13, 2500, 'Direct Deposit'),
 (3, 3, 1, 490, 104, 8, 2500, 'Paycheck');
 
@@ -231,9 +231,16 @@ CREATE TABLE `feedbacks` (
 
 CREATE TABLE `file_uploads` (
   `fileID` int(11) NOT NULL,
-  `filename` varchar(255) NOT NULL,
   `filedata` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `file_uploads`
+--
+
+INSERT INTO `file_uploads` (`fileID`, `filedata`) VALUES
+(2, 0x53454c45435420515545524945532e747874),
+(3, 0x53454c45435420515545524945532e747874);
 
 -- --------------------------------------------------------
 
@@ -261,14 +268,20 @@ CREATE TABLE `grief_plans` (
   `docs_fileID` int(11) DEFAULT NULL,
   `assTo_eID` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
-  `grvDate` date NOT NULL,
-  `grvTime` time NOT NULL,
+  `grvDT` datetime NOT NULL,
   `grvDesc` text NOT NULL,
   `grvSts` varchar(20) NOT NULL DEFAULT 'PENDING',
   `uplDate` date NOT NULL DEFAULT curdate(),
   `invDesc` text NOT NULL,
   `actDesc` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `grief_plans`
+--
+
+INSERT INTO `grief_plans` (`grvID`, `grv_eID`, `docs_fileID`, `assTo_eID`, `name`, `grvDT`, `grvDesc`, `grvSts`, `uplDate`, `invDesc`, `actDesc`) VALUES
+(3, 1, 2, 2, 'Sam Pacaldo', '2023-05-24 02:55:00', 'Overnight in completing project', 'PENDING', '2023-05-24', '', '');
 
 -- --------------------------------------------------------
 
@@ -644,7 +657,7 @@ ALTER TABLE `attendances`
 -- AUTO_INCREMENT for table `benefit_plans`
 --
 ALTER TABLE `benefit_plans`
-  MODIFY `benID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `benID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `compensations_benefits`
@@ -680,7 +693,7 @@ ALTER TABLE `feedbacks`
 -- AUTO_INCREMENT for table `file_uploads`
 --
 ALTER TABLE `file_uploads`
-  MODIFY `fileID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `fileID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `goals`
@@ -692,7 +705,7 @@ ALTER TABLE `goals`
 -- AUTO_INCREMENT for table `grief_plans`
 --
 ALTER TABLE `grief_plans`
-  MODIFY `grvID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `grvID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `improvements`

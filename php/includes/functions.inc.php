@@ -90,6 +90,7 @@ function errorInput_placeholder() {
 
 function displayEmployee_personalInfo ($connection, $eid) {
     $sql = "SELECT * FROM employees
+            LEFT JOIN employment_details ON employment_details.ed_eID = employees.eID
             LEFT JOIN goals ON goals.goal_eID = employees.eID
             LEFT JOIN reviews ON reviews.rev_eID = employees.eID
             LEFT JOIN feedbacks ON feedbacks.fb_eID = employees.eID
@@ -102,17 +103,30 @@ function displayEmployee_personalInfo ($connection, $eid) {
             
                 <ul class='mx-auto my-8 w-80 list-inside list-disc'>
                     <li>
-                    <a href='#' class='text-blue-600 hover:text-orange-300'>- Contract</a>
+                    <a href='#' class='text-blue-600 hover:text-orange-300'><b>Personal Info</b></a>
+                        <ul class='nested-list' >
+                            <li>Name: ".$row['name']." - ID # ".$row['eID']."</li>
+                            <li>Date of Birth: ".$row['bDate']."</li>
+                            <li>Nationality: ".$row['nationality']."</li>
+                            <li>Gender: ".$row['gender']."</li>
+                            <li>Address: ".$row['address']."</li>
+                        </ul>
                     </li>
                     <li>
                     <a href='#' class='text-blue-600 hover:text-blue-800'
-                        >- Performance Evaluation</a
+                        ><b>Performance Evaluation</b></a
                     >
+                        <ul class='nested-list' >
+                            <li>---</li>
+                        </ul>
                     </li>
                     <li>
                     <a href='#' class='text-blue-600 hover:text-blue-800'
-                        >- Training Records</a
+                        ><b>Training Records</b></a
                     >
+                        <ul class='nested-list' >
+                            <li>---</li>
+                        </ul>                    
                     </li>
                 </ul>
             ";
@@ -120,22 +134,31 @@ function displayEmployee_personalInfo ($connection, $eid) {
     else {
         echo "
             
-                <ul class='mx-auto my-8 w-80 list-inside list-disc'>
-                    <li>
-                    <a href='#' class='text-blue-600 hover:text-orange-300'>- Contract</a>
-                    </li>
-                    <li>
-                    <a href='#' class='text-blue-600 hover:text-blue-800'
-                        >- Performance Evaluation</a
-                    >
-                    </li>
-                    <li>
-                    <a href='#' class='text-blue-600 hover:text-blue-800'
-                        >- Training Records</a
-                    >
-                    </li>
-                </ul>
-            ";
+        <ul class='mx-auto my-8 w-80 list-inside list-disc'>
+        <li>
+        <a href='#' class='text-blue-600 hover:text-orange-300'><b>Personal Info</b></a>
+            <ul class='nested-list' >
+                <li>---</li>
+            </ul>
+        </li>
+        <li>
+        <a href='#' class='text-blue-600 hover:text-blue-800'
+            ><b>Performance Evaluation</b></a
+        >
+            <ul class='nested-list' >
+                <li>---</li>
+            </ul>
+        </li>
+        <li>
+        <a href='#' class='text-blue-600 hover:text-blue-800'
+            ><b>Training Records</b></a
+        >
+            <ul class='nested-list' >
+                <li>---</li>
+            </ul>
+        </li>
+    </ul>
+";
     }
     
 }
@@ -774,4 +797,80 @@ function displayLeave ($connection) {
             </tr>
         ";
     }
+}
+
+/*===================================================================================================================================
+    functions used in: report.php
+===================================================================================================================================*/
+
+
+function getAge ($birthdate) {
+    $currentDate = date("Y-m-d"); // Get the current date in "Y-m-d" format
+
+    $birthTimestamp = strtotime($birthdate); // Convert the birthdate to a UNIX timestamp
+    $currentTimestamp = strtotime($currentDate); // Convert the current date to a UNIX timestamp
+
+    $diffInSeconds = $currentTimestamp - $birthTimestamp; // Calculate the difference in seconds
+    $years = floor($diffInSeconds / (365 * 24 * 60 * 60)); // Calculate the number of years
+    return $years;
+}
+
+function demographics_nationality ($connection) {
+    $sql = "SELECT nationality, COUNT(*) AS count, (COUNT(*) / (SELECT COUNT(*) FROM employees)) * 100 AS percentage
+            FROM employees
+            GROUP BY nationality;";
+    $result = mysqli_query($connection, $sql);
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "
+            <p class='mx-8 text-lg text-gray-800'>". $row['nationality'] ." - ". number_format($row['percentage'], 2, ".", ",") ."%</p>
+        ";
+    }
+}
+
+function demographics_gender ($connection) {
+    $sql = "SELECT gender, COUNT(*) AS count, (COUNT(*) / (SELECT COUNT(*) FROM employees)) * 100 AS percentage
+            FROM employees
+            GROUP BY gender;";
+    $result = mysqli_query($connection, $sql);
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "
+            <p class='mx-8 text-lg text-gray-800'>". $row['gender'] ." - ". number_format($row['percentage'], 2, ".", ",") ."%</p>
+        ";
+    }
+}
+
+function demographics_agemedian ($connection) {
+    $median = 0;
+    $sql = "SELECT * FROM employees";
+    $result = mysqli_query($connection,$sql);
+    $rownums = mysqli_num_rows($result);
+    while ($row = mysqli_fetch_assoc($result)) {
+        $age = getAge($row['bDate']);
+        $median += $age;
+    }
+    $median = $median / $rownums;
+    return $median;
+}
+
+function displayAverageSalary($connection) {
+    $sql = "SELECT AVG(wageRph) AS avgsal
+            FROM compensations_benefits;";
+    $result = mysqli_query($connection, $sql);
+    $row = mysqli_fetch_assoc( $result );        
+    echo "
+        <p class='text-gray-600'>
+            The average salary rate per hour of employees is ". number_format($row['avgsal'], 2, ".", ",") ."
+        </p>
+    ";
+    $sql = "SELECT AVG(wageRph * (rgwHrs + otwHrs)) AS avgsal
+            FROM compensations_benefits;";
+    $result = mysqli_query($connection, $sql);
+    $row = mysqli_fetch_assoc($result);      
+    echo "
+        <p class='text-gray-600'>
+            The average salary pay employees is ". number_format($row['avgsal'], 2, ".", ",") ."
+        </p>
+    ";
+
+
 }

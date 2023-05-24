@@ -1,6 +1,6 @@
 <!-- Footer -->
 <footer class="end-page">
-      <div class="copyright">@2023 Human Resouce System</div>
+      <div class="copyright">@2023 Human Resource System</div>
       <div class="n-end">
         About
         <div class="n-info">

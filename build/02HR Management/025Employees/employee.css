@@ -3,3 +3,11 @@
     color: white;
     box-shadow: 0.1rem -0.1rem 0.1rem white;
 }
+
+ul {
+    margin-left: 20px; /* Adjust the indentation as needed */
+}
+  
+ul.nested-list {
+    margin-left: 20px; /* Adjust the indentation as needed */
+}

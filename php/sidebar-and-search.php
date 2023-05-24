@@ -75,7 +75,7 @@
       </ul>
       <!-- Search and Login -->
       <div class="sidebar-login">
-        <a href="" class="login">sign out</a>
+        <a href="/build/002Login Page/login.php" class="login">sign out</a>
       </div>
     </aside>
     <!-- End of Sidebar -->
