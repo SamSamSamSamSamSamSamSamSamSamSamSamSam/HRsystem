@@ -92,7 +92,11 @@
         </li>
       </ul>
       <form action="../../../php/includes/employee.inc.php" method="post">  
-      <?php include_once '../../../php/sidebar-and-search.php'; ?>
+      <?php 
+            include_once '../../../php/sidebar-and-search.php'; 
+            require_once '../../../php/includes/dbconn.inc.php';
+            require_once '../../../php/includes/functions.inc.php';
+      ?>
 
     <!-- Content -->
     <main>
@@ -105,7 +109,6 @@
             <th>Start Date</th>
             <th>End Date</th>
             <th>Number of Days</th>
-            <th>Reason</th>
             <th>Available Leave Days</th>
             <th>Manager Name</th>
             <th>Manager Signature</th>
@@ -115,107 +118,9 @@
           </tr>
         </thead>
         <tbody>
-          <!-- Jana Adriana Quiambao -->
-          <tr class="leave-row">
-            <td class="employee-id">5851</td>
-            <td class="employee-name">Jana Adriana Quiambao</td>
-            <td class="leave-type">Sick</td>
-            <td class="leave-start-date">4/15/2023</td>
-            <td class="leave-end-date">4/18/2023</td>
-            <td class="leave-days">3</td>
-            <td class="leave-reason">Fever</td>
-            <td class="leave-balance">8</td>
-            <td class="manager-name">Derrick Guzman</td>
-            <td class="manager-signature">
-              <!-- Upload manager signature here -->
-              <div class="file-upload">
-                <input type="file" accept="image/*" />
-              </div>
-            </td>
-            <td class="leave-date"></td>
-            <td class="leave-status status-pending">Pending</td>
-            <td class="leave-actions">
-              <!-- Add approve/deny buttons here -->
-              <button class="approve-button">Approve</button>
-              <button class="deny-button">Deny</button>
-            </td>
-          </tr>
-          <!-- Rosalyn Cadar -->
-          <tr class="leave-row">
-            <td class="employee-id">7236</td>
-            <td class="employee-name">Rosalyn Cadar</td>
-            <td class="leave-type">Sick</td>
-            <td class="leave-start-date">4/15/2023</td>
-            <td class="leave-end-date">4/18/2023</td>
-            <td class="leave-days">3</td>
-            <td class="leave-reason">Fever</td>
-            <td class="leave-balance">8</td>
-            <td class="manager-name">Jonathan Kyle</td>
-            <td class="manager-signature">
-              <!-- Upload manager signature here -->
-              <div class="file-upload">
-                <input type="file" accept="image/*" />
-              </div>
-            </td>
-            <td class="leave-date"></td>
-            <td class="leave-status status-pending">Pending</td>
-            <td class="leave-actions">
-              <!-- Add approve/deny buttons here -->
-              <button class="approve-button">Approve</button>
-              <button class="deny-button">Deny</button>
-            </td>
-          </tr>
-          <!-- Bob Johnson -->
-          <tr class="leave-row">
-            <td class="employee-id">7715</td>
-            <td class="employee-name">Bob Johnson</td>
-            <td class="leave-type">Sick</td>
-            <td class="leave-start-date">4/15/2023</td>
-            <td class="leave-end-date">4/18/2023</td>
-            <td class="leave-days">3</td>
-            <td class="leave-reason">Fever</td>
-            <td class="leave-balance">8</td>
-            <td class="manager-name">Derrick Guzman</td>
-            <td class="manager-signature">
-              <!-- Upload manager signature here -->
-              <div class="file-upload">
-                <input type="file" accept="image/*" />
-              </div>
-            </td>
-            <td class="leave-date"></td>
-            <td class="leave-status status-pending">Pending</td>
-            <td class="leave-actions">
-              <!-- Add approve/deny buttons here -->
-              <button class="approve-button">Approve</button>
-              <button class="deny-button">Deny</button>
-            </td>
-            <!-- Samantha Lee -->
-          </tr>
-
-          <tr class="leave-row">
-            <td class="employee-id">8909</td>
-            <td class="employee-name">Samantha Lee</td>
-            <td class="leave-type">Sick</td>
-            <td class="leave-start-date">4/15/2023</td>
-            <td class="leave-end-date">4/18/2023</td>
-            <td class="leave-days">3</td>
-            <td class="leave-reason">Fever</td>
-            <td class="leave-balance">8</td>
-            <td class="manager-name">Derrick Guzman</td>
-            <td class="manager-signature">
-              <!-- Upload manager signature here -->
-              <div class="file-upload">
-                <input type="file" accept="image/*" />
-              </div>
-            </td>
-            <td class="leave-date"></td>
-            <td class="leave-status status-pending">Pending</td>
-            <td class="leave-actions">
-              <!-- Add approve/deny buttons here -->
-              <button class="approve-button">Approve</button>
-              <button class="deny-button">Deny</button>
-            </td>
-          </tr>
+          <?php
+                displayLeave($connection);
+          ?>
         </tbody>
       </table>
       <!-- End of Table -->

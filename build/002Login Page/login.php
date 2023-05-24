@@ -51,7 +51,7 @@
               type="text"
               name="login-email"
               id="username"
-              placeholder="sebastian_hans1989@gmail.com"
+              placeholder="usename123@gmail.com"
               class="input-style"
             />
           </div>

@@ -95,17 +95,23 @@
         </li>
       </ul>
       <form action="../../../php/includes/employee.inc.php" method="post">  
-      <?php include_once '../../../php/sidebar-and-search.php'; ?>
+      <?php 
+        include_once '../../../php/sidebar-and-search.php'; 
+        require_once '../../../php/includes/dbconn.inc.php';
+        require_once '../../../php/includes/functions.inc.php';
+      ?>
 
     <!-- Content -->
     <main class="m-4 text-human-resource-white">
       <section>
         <h2 class="mb-4 text-center text-9xl font-bold">SUBMIT A GRIEVANCE</h2>
-        <form id="grievanceForm" class="m-auto flex flex-col space-y-4">
+        <form action="../../../php/includes/grief.inc.php" method="post"
+          id="grievanceForm" class="m-auto flex flex-col space-y-4">
           <label for="employeeID" class="block font-bold">Employee ID</label>
           <input
             type="text"
             id="employeeID"
+            name="employeeID"
             required
             class="focus:ring-human-resource-blue-dark w-full rounded-md border px-3 py-2 text-human-resource-blue shadow-sm focus:border-transparent focus:outline-none focus:ring-2"
           />
@@ -116,6 +122,7 @@
           <input
             type="text"
             id="employeeName"
+            name="employeeName"
             required
             class="focus:ring-human-resource-blue-dark w-full rounded-md border px-3 py-2 text-human-resource-blue shadow-sm focus:border-transparent focus:outline-none focus:ring-2"
           />
@@ -126,6 +133,7 @@
           <input
             type="datetime-local"
             id="grievanceDate"
+            name="grievanceDate"
             required
             class="focus:ring-human-resource-blue-dark w-full rounded-md border px-3 py-2 text-center text-human-resource-blue shadow-sm focus:border-transparent focus:outline-none focus:ring-2"
           />
@@ -135,9 +143,19 @@
           >
           <textarea
             id="grievanceDescription"
+            name="grievanceDescription"
             required
             class="focus:ring-human-resource-blue-dark w-full rounded-md border px-3 py-2 text-human-resource-blue shadow-sm focus:border-transparent focus:outline-none focus:ring-2"
           ></textarea>
+
+          <label for="handlerID" class="block font-bold">Officer ID</label>
+          <input
+            type="text"
+            id="handlerID"
+            name="handlerID"
+            required
+            class="focus:ring-human-resource-blue-dark w-full rounded-md border px-3 py-2 text-human-resource-blue shadow-sm focus:border-transparent focus:outline-none focus:ring-2"
+          />
 
           <label for="supportingDocuments" class="block font-bold"
             >Supporting Documents</label
@@ -145,11 +163,12 @@
           <input
             type="file"
             id="supportingDocuments"
+            name="supportingDocuments"
             class="focus:ring-human-resource-blue-dark w-full rounded-md border px-3 py-2 text-human-resource-white shadow-sm focus:border-transparent focus:outline-none focus:ring-2"
           />
 
           <button
-            type="submit"
+            type="submit" name="submit"
             class="mx-auto max-w-sm rounded bg-human-resource-gray px-4 py-2 text-center font-bold text-human-resource-blue hover:bg-human-resource-white"
           >
             Submit Grievance
@@ -172,16 +191,9 @@
             </tr>
           </thead>
           <tbody>
-            <tr
-              class="ring-human-resource-blue-dark bg-gray-100 text-center text-human-resource-blue"
-            >
-              <td class="w-1/6 border p-3">GRV-001</td>
-              <td class="w-1/4 border p-3">Joseph Santa-Maria</td>
-              <td class="status-pending w-1/6 border p-3">Pending</td>
-              <td class="w-1/4 border p-3">HR Manager</td>
-              <td class="w-1/4 border p-3">5/11/2023 09:30 AM</td>
-            </tr>
-            <!-- Additional rows for other grievances -->
+            <?php
+                displayGrievances($connection);
+            ?>
           </tbody>
         </table>
       </section>
@@ -190,43 +202,9 @@
         class="mt 5/11/2023, 1:05:21 PM continue 5/11/2023, 1:05:58 PM -8"
       >
         <h2 class="mb-4 mt-8 text-xl">Grievance Resolution</h2>
-        <div id="grievanceResolution" class="space-y-4">
-          <div
-            class="rounded-lg bg-white p-4 text-human-resource-blue shadow-md"
-          >
-            <h3
-              class="5/11/2023, 1:33:12 PM continue 5/11/2023, 1:33:38 PM text-lg font-bold"
-            >
-              GRV-001
-            </h3>
-            <p class="mb-2">
-              <span class="font-bold">Status:</span>
-              <span class="status-pending">Pending</span>
-            </p>
-            <p class="mb-2">
-              <span class="font-bold">Assigned To:</span> HR Manager
-            </p>
-            <p class="mb-2">
-              <span class="font-bold">Last Updated:</span> 5/11/2023 09:30 AM
-            </p>
-            <p class="mb-2">
-              <span class="font-bold">Description:</span> Lorem ipsum dolor sit
-              amet, consectetur adipiscing elit. Ut aliquet gravida lectus, et
-              consectetur tellus euismod id.
-            </p>
-            <p class="mb-2">
-              <span class="font-bold">Investigation Findings:</span> Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit. Nulla in neque sit
-              amet eros congue auctor.
-            </p>
-            <p class="mb-2">
-              <span class="font-bold">Actions Taken:</span> Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit. Sed et lacus ut felis
-              congue consectetur.
-            </p>
-            <!-- Additional details for other grievances -->
-          </div>
-        </div>
+        <?php
+              displayGrievances_resolution($connection);
+        ?>
       </section>
     </main>
     <!-- End of Content -->

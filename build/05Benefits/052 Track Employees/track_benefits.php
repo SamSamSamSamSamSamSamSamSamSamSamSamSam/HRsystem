@@ -96,13 +96,17 @@
         </li>
       </ul>
       <form action="../../../php/includes/employee.inc.php" method="post">  
-      <?php include_once '../../../php/sidebar-and-search.php'; ?>
+      <?php 
+            include_once '../../../php/sidebar-and-search.php'; 
+            require_once '../../../php/includes/dbconn.inc.php';
+            require_once '../../../php/includes/functions.inc.php';
+      ?>
 
     <!-- Contents -->
     <main>
       <div class="mx-auto max-w-2xl py-10">
         <form
-          action="<!-- redirects to an indivuals benefits -->"
+          action="../../../php/includes/track_benefits.inc.php"
           method="post"
           class="rounded-lg bg-human-resource-white px-8 py-6 shadow-lg"
         >
@@ -110,7 +114,7 @@
             <h2
               class="mb-4 text-center text-2xl font-bold text-human-resource-blue"
             >
-              Create Employee Benefits
+              Enroll Employee Benefits
             </h2>
             <div class="-mx-2 mb-4 flex flex-wrap">
               <div class="mb-4 w-full px-2 md:mb-0 md:w-1/2">
@@ -140,6 +144,7 @@
                   id="employee-id"
                   name="employee-id"
                   type="text"
+                  required
                   placeholder="9565323"
                 />
               </div>
@@ -148,7 +153,7 @@
 
           <div class="mb-6">
             <h3 class="mb-4 text-lg font-bold text-human-resource-blue">
-              Health Insurance
+              Choose available plan to enroll
             </h3>
             <div class="-mx-2 mb-4 flex flex-wrap">
               <div class="mb-4 w-full px-2 md:mb-0 md:w-1/2">
@@ -156,17 +161,17 @@
                   class="mb-2 block font-bold text-human-resource-blue"
                   for="health-plan-type"
                 >
-                  Plan Type
+                  Plan Name
                 </label>
                 <select
                   class="focus:shadow-outline w-full appearance-none rounded px-3 py-2 leading-tight text-sky-900 focus:outline-none"
-                  id="health-plan-type"
-                  name="health-plan-type"
+                  id="plan_name"
+                  name="plan_name"
                 >
-                  <option value="A">WHEN THE HR WILL ADD</option>
-                  <option value="B">THE SETUP PLAN TYPE</option>
-                  <option value="C">THEY WILL AUTOMATICALLY</option>
-                  <option value="D">ADDED IN THIS FIELD</option>
+                <!---[ PLAN OPTIONS ]--->
+                  <?php
+                    planOptions($connection);
+                  ?>
                 </select>
               </div>
               <div class="w-full px-2 md:w-1/2">
@@ -178,49 +183,19 @@
                 </label>
                 <select
                   class="focus:shadow-outline w-full appearance-none rounded px-3 py-2 leading-tight text-sky-900 focus:outline-none"
-                  id="health-coverage-level"
-                  name="health-coverage-level"
+                  id="coverage-level"
+                  name="coverage-level"
                 >
                   <option value="Individual">Individual</option>
                   <option value="Family">Family</option>
                 </select>
               </div>
             </div>
-            <div class="-mx-2 mb-4 flex flex-wrap">
-              <div class="mb-4 w-full px-2 md:mb-0 md:w-1/2">
-                <label
-                  class="mb-2 block font-bold text-human-resource-blue"
-                  for="health-start-date"
-                >
-                  Start Date
-                </label>
-                <input
-                  class="focus:shadow-outline w-full appearance-none rounded px-3 py-2 leading-tight text-gray-700 focus:outline-none"
-                  id="health-start-date"
-                  name="health-start-date"
-                  type="date"
-                />
-              </div>
-              <div class="mb-4 w-full px-2 md:mb-0 md:w-1/2">
-                <label
-                  class="mb-2 block font-bold text-human-resource-gray"
-                  for="health-start-date"
-                >
-                  End Date
-                </label>
-                <input
-                  class="focus:shadow-outline w-full appearance-none rounded px-3 py-2 leading-tight text-human-resource-blue focus:outline-none"
-                  id="health-start-date"
-                  name="health-start-date"
-                  type="date"
-                />
-              </div>
-            </div>
           </div>
           <div class="text-center">
             <button
               class="focus:shadow-outline rounded bg-human-resource-blue px-4 py-2 font-bold text-white hover:bg-red-700 hover:text-human-resource-blue focus:outline-none"
-              type="submit"
+              type="submit" name="submit"
             >
               Submit
             </button>

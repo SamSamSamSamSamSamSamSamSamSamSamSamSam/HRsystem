@@ -87,6 +87,60 @@ function errorInput_placeholder() {
     echo "Search...";
 }
 
+
+function displayEmployee_personalInfo ($connection, $eid) {
+    $sql = "SELECT * FROM employees
+            LEFT JOIN goals ON goals.goal_eID = employees.eID
+            LEFT JOIN reviews ON reviews.rev_eID = employees.eID
+            LEFT JOIN feedbacks ON feedbacks.fb_eID = employees.eID
+            LEFT JOIN improvements ON improvements.imp_eID = employees.eID
+            WHERE eID = $eid;";
+    $result = mysqli_query($connection, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+            echo "
+            
+                <ul class='mx-auto my-8 w-80 list-inside list-disc'>
+                    <li>
+                    <a href='#' class='text-blue-600 hover:text-orange-300'>- Contract</a>
+                    </li>
+                    <li>
+                    <a href='#' class='text-blue-600 hover:text-blue-800'
+                        >- Performance Evaluation</a
+                    >
+                    </li>
+                    <li>
+                    <a href='#' class='text-blue-600 hover:text-blue-800'
+                        >- Training Records</a
+                    >
+                    </li>
+                </ul>
+            ";
+    }
+    else {
+        echo "
+            
+                <ul class='mx-auto my-8 w-80 list-inside list-disc'>
+                    <li>
+                    <a href='#' class='text-blue-600 hover:text-orange-300'>- Contract</a>
+                    </li>
+                    <li>
+                    <a href='#' class='text-blue-600 hover:text-blue-800'
+                        >- Performance Evaluation</a
+                    >
+                    </li>
+                    <li>
+                    <a href='#' class='text-blue-600 hover:text-blue-800'
+                        >- Training Records</a
+                    >
+                    </li>
+                </ul>
+            ";
+    }
+    
+}
+
+
   // This function displays employee information in the table
   function displayEmployee($connection, $sql) { 
     $result = mysqli_query($connection, $sql);
@@ -101,7 +155,7 @@ function errorInput_placeholder() {
               <td class='text-center'>".$row["eID"]."</td>
               <td class='py-16 text-center'>
                 <a
-                  href='/build/02HR Management/025Employees/employeeInfo.php?EID='
+                  href='#personalInfos'
                   class='employeeDetailsLink font-medium text-blue-600 hover:text-blue-800'
                   >".$row["name"]."</a
                 >
@@ -359,7 +413,7 @@ function record_interviewSched ($connection, $sql) {
 }
 
 /*===================================================================================================================================
-    functions used in: 
+    functions used in: rota.php
 ===================================================================================================================================*/
 
 function displayShiftRotation ($connection) {
@@ -524,15 +578,200 @@ function displayPayroll ($connection) {
 }
 
 /*===================================================================================================================================
-    functions used in: 
+    functions used in: setup-plans.php
 ===================================================================================================================================*/
 
 
+function planOptions ($connection) {
+    $query = "SELECT * FROM benefit_plans";
+    $result = mysqli_query($connection, $query);
+
+    // Check if the query was successful and fetch the options
+    if ($result && mysqli_num_rows($result) > 0) {
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<option value='" . $row['benID'] . "'>".$row['planName']."</option>";
+        }
+    } else {
+        echo "<option value=''>No options found</option>";
+    }
+}
+
+/*===================================================================================================================================
+    functions used in: eligibles.php
+===================================================================================================================================*/
+
+function displayEligibles ($connection) {
+    $sql = "SELECT employees.eID, employees.name, departments.depName, jobs.jobTitle, benefit_plans.planName
+            FROM employees
+            INNER JOIN employment_details ON employment_details.ed_eID = employees.eID
+            INNER JOIN jobs ON employment_details.ed_jobID = jobs.jobID
+            INNER JOIN departments ON departments.depID = jobs.depID
+            INNER JOIN compensations_benefits ON compensations_benefits.cb_eID = employees.eID
+            INNER JOIN benefit_plans ON compensations_benefits.cb_benID = benefit_plans.benID;";
+    $result = mysqli_query($connection, $sql);
+
+    while($row = mysqli_fetch_assoc($result)) {
+        echo "
+        <tr class='border-b border-human-resource-white'>
+            <td class='py-16 text-center'>". $row['eID'] ."</td>
+            <td class='text-center'>". $row['name'] ."</td>
+            <td class='text-center'>". $row['depName'] ."</td>
+            <td class='text-center'>". $row['jobTitle'] ."</td>
+            <td class='text-center'>". $row['planName'] ."</td>
+        </tr>
+        ";
+    }
+}
+
+function displayEligibles_smallscreen ($connection) {
+    $sql = "SELECT employees.eID, employees.name, departments.depName, jobs.jobTitle, benefit_plans.planName
+            FROM employees
+            INNER JOIN employment_details ON employment_details.ed_eID = employees.eID
+            INNER JOIN jobs ON employment_details.ed_jobID = jobs.jobID
+            INNER JOIN departments ON departments.depID = jobs.depID
+            INNER JOIN compensations_benefits ON compensations_benefits.cb_eID = employees.eID
+            INNER JOIN benefit_plans ON compensations_benefits.cb_benID = benefit_plans.benID;";
+    $result = mysqli_query($connection, $sql);
+
+    while($row = mysqli_fetch_assoc($result)) {
+        echo "
+            <div
+                class='m-5 mx-auto max-w-sm rounded-lg bg-white bg-gradient-to-r p-8 md:hidden'
+                >
+                <h2 class='mb-4 text-center text-2xl font-bold text-gray-800'>
+                ". $row['eID'] ."
+                </h2>
+                <p class='mb-2 text-center text-xl font-bold text-gray-800'>
+                ". $row['name'] ."
+                </p>
+                <p class='mb-2 text-center text-xl font-bold text-gray-800'>
+                    Department
+                </p>
+                <p class='mb-2 text-center text-base text-gray-800'>
+                ". $row['depName'] ."
+                </p>
+                <p class='mb-2 text-center text-base text-gray-800'>". $row['jobTitle'] ."</p>
+                <p class='mb-2 text-center text-xl font-bold text-gray-800'>
+                    Currently Enrolled
+                </p>
+                <p class='mb-2 text-center text-base text-gray-800'>
+                ". $row['planName'] ."
+                </p>
+            </div>
+        ";
+    }
+}
+
+/*===================================================================================================================================
+    functions used in: greif.php
+===================================================================================================================================*/
+            
+
+function displayGrievances ($connection) {
+    $sql = "SELECT grief_plans.grvID, emp1.name AS requester, grief_plans.grvSts, emp2.name AS incharge, grief_plans.uplDate
+            FROM grief_plans 
+            INNER JOIN employees emp1 ON grief_plans.grv_eID = emp1.eID
+            INNER JOIN employees emp2 ON grief_plans.assTo_eID = emp2.eID;";
+    $result = mysqli_query($connection, $sql);
+    while ($row = mysqli_fetch_assoc($result)){
+        echo "
+            <tr
+                class='ring-human-resource-blue-dark bg-gray-100 text-center text-human-resource-blue'
+                >
+                <td class='w-1/6 border p-3'>GRV-". $row['grvID'] ."</td>
+                <td class='w-1/4 border p-3'>". $row['requester'] ."</td>
+                <td class='status-pending w-1/6 border p-3'>". $row['grvSts'] ."</td>
+                <td class='w-1/4 border p-3'>". $row['incharge'] ."</td>
+                <td class='w-1/4 border p-3'>". $row['uplDate'] ."</td>
+            </tr>
+        ";
+    }        
+} 
 
 
+function displayGrievances_resolution ($connection) {
+    $sql = "SELECT grief_plans.*, emp1.name AS incharge 
+            FROM grief_plans 
+            INNER JOIN employees emp1 ON grief_plans.assTo_eID = emp1.eID;";
+    $result = mysqli_query($connection, $sql);
+    while ($row = mysqli_fetch_assoc($result)){
+        echo "
+            <div id='grievanceResolution' class='space-y-4'>
+                <div
+                class='rounded-lg bg-white p-4 text-human-resource-blue shadow-md'
+                >
+                <h3
+                    class='5/11/2023, 1:33:12 PM continue 5/11/2023, 1:33:38 PM text-lg font-bold'
+                >
+                    GRV-". $row["grvID"] ."
+                </h3>
+                <p class='mb-2'>
+                    <span class='font-bold'>Status:</span>
+                    <span class='status-pending'>". $row["grvSts"] ."</span>
+                </p>
+                <p class='mb-2'>
+                    <span class='font-bold'>Assigned To:</span> ". $row["incharge"] ."
+                </p>
+                <p class='mb-2'>
+                    <span class='font-bold'>Last Updated:</span> ". $row["uplDate"] ."
+                </p>
+                <p class='mb-2'>
+                    <span class='font-bold'>Description:</span> ". $row["grvDesc"] ."
+                </p>
+                <p class='mb-2'>
+                    <span class='font-bold'>Investigation Findings:</span> ". $row["invDesc"] ."
+                </p>
+                <p class='mb-2'>
+                    <span class='font-bold'>Actions Taken:</span> ". $row["actDesc"] ."
+                </p>
+                <!-- Additional details for other grievances -->
+                </div>
+            </div>
+        ";
+    }   
+}
 
 
+/*===================================================================================================================================
+    functions used in: greif.php
+===================================================================================================================================*/
 
-
-
-
+function displayLeave ($connection) {
+    $sql = "SELECT emp1.eID, emp1.name AS leaver, leave_plans.*, emp2.name AS incharge 
+            FROM leave_plans
+            INNER JOIN employees emp1 ON leave_plans.lve_eID = emp1.eID
+            INNER JOIN employees emp2 ON leave_plans.mgr_eID = emp2.eID;
+            ";
+    $result = mysqli_query($connection, $sql);
+    while ($row = mysqli_fetch_assoc($result)){
+        echo "
+            <tr class='leave-row'>
+                <td class='employee-id'>".$row['eID']."</td>
+                <td class='employee-name'>".$row['leaver']."</td>
+                <td class='leave-type'>".$row['lveType']."</td>
+                <td class='leave-start-date'>".$row['staDate']."</td>
+                <td class='leave-end-date'>".$row['endDate']."</td>
+                <td class='leave-days'>".$row['numdLve']."</td>
+                <td class='leave-balance'>".$row['avlLve']."</td>
+                <td class='manager-name'>".$row['incharge']."</td>
+                    <form action='../../../php/includes/leave.inc.php' method='post'>
+                        <td class='manager-signature'>
+                        <div class='file-upload'>
+                            <input type='file' accept='image' name='filesign'/>
+                        </div>
+                    </form>
+                    </td>
+                    <td class='leave-date'>". $row['decisionDate'] ."</td>
+                    
+                    <td class='leave-status'>".$row['decisionSts']."</td>
+                <td class='leave-actions'>
+                    <form action='../../../php/includes/leave.inc.php' method='post'>
+                        <button  name='submit-app' value=".$row['lveID']." >Approve</button>
+                        <button  name='submit-den'  value='".$row['lveID']."' >Deny</button>
+                    </form>
+                </td>
+            </tr>
+        ";
+    }
+}

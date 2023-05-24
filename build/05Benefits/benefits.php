@@ -97,10 +97,10 @@
     <!-- Content -->
     <main class="benefits-page">
       <a href="/build/05Benefits/051 Setup Plans/setup_plans.php">
-        <div class="benefits-pages">SETUP PLANS</div>
+        <div class="benefits-pages">SETUP BENEFIT PLANS</div>
       </a>
       <a href="/build/05Benefits/052 Track Employees/track_benefits.php">
-        <div class="benefits-pages">TRACK EMPLOYEES</div>
+        <div class="benefits-pages">ENROLL EMPLOYEE BENEFIT</div>
       </a>
       <a href="/build/05Benefits/053 Eligibility/eligible.php">
         <div class="benefits-pages">ELIGIBLE EMPLOYEES</div>

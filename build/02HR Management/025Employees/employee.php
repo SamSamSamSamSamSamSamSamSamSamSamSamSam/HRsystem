@@ -374,22 +374,13 @@
       <h2 class="mt-8 text-center text-xl font-bold">
         Employee Documents and Files
       </h2>
-      <ul class="mx-auto my-8 w-80 list-inside list-disc">
-        <li>
-          <a href="#" class="text-blue-600 hover:text-orange-300">- Contract</a>
-        </li>
-        <li>
-          <a href="#" class="text-blue-600 hover:text-blue-800"
-            >- Performance Evaluation</a
-          >
-        </li>
-        <li>
-          <a href="#" class="text-blue-600 hover:text-blue-800"
-            >- Training Records</a
-          >
-        </li>
-        <!-- additional list items for other employee files -->
-      </ul>
+      <div id="personalInfos"
+        class="mx-auto max-w-2xl rounded-md bg-human-resource-white p-4 text-human-resource-blue"
+      >
+        <?php
+          displayEmployee_personalInfo($connection, 1);
+        ?>
+      </div>
 
 <!--------------[ MANIPULATE EMPLOYEE DATA ]-------------------------------------------------------------------------------------------------------->
 

@@ -95,7 +95,11 @@
         </li>
       </ul>
       <form action="../../../php/includes/employee.inc.php" method="post">  
-      <?php include_once '../../../php/sidebar-and-search.php'; ?>
+      <?php 
+        include_once '../../../php/sidebar-and-search.php'; 
+        require_once '../../../php/includes/dbconn.inc.php';
+        require_once '../../../php/includes/functions.inc.php';
+      ?>
 
     <!-- Contents -->
     <main>
@@ -109,180 +113,22 @@
             <th class="text-center">Name</th>
             <th class="text-center">Department</th>
             <th class="text-center">Job Title</th>
-            <th class="text-center">Health Insurance</th>
-            <th class="text-center">Dental Insurance</th>
-            <th class="text-center">Retirement Plan</th>
-            <th class="text-center">Enrollment Status</th>
+            <th class="text-center">Benefit Plans Enrolled</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="border-b border-human-resource-white">
-            <td class="py-16 text-center">954</td>
-            <td class="text-center">Joshua Marcel</td>
-            <td class="text-center">Sales</td>
-            <td class="text-center">Sales Manager</td>
-            <td class="text-center">Enrolled</td>
-            <td class="text-center">Not Enrolled</td>
-            <td class="text-center">Enrolled</td>
-            <td class="status-approved text-center">Active</td>
-          </tr>
-          <tr class="border-b border-human-resource-white">
-            <td class="py-16 text-center">1103</td>
-            <td class="text-center">Adolfo Calañas</td>
-            <td class="text-center">HR</td>
-            <td class="text-center">HR Specialist</td>
-            <td class="text-center">Enrolled</td>
-            <td class="text-center">Enrolled</td>
-            <td class="text-center">Not Enrolled</td>
-            <td class="status-approved text-center">Active</td>
-          </tr>
-          <tr class="border-b border-human-resource-white">
-            <td class="py-16 text-center">2005</td>
-            <td class="text-center">Mallorie Aria Mindoro</td>
-            <td class="text-center">Finance</td>
-            <td class="text-center">Accountant</td>
-            <td class="text-center">Not Enrolled</td>
-            <td class="text-center">Enrolled</td>
-            <td class="text-center">Enrolled</td>
-            <td class="status-approved text-center">Active</td>
-          </tr>
-          <tr class="border-b border-human-resource-white">
-            <td class="py-16 text-center">2020</td>
-            <td class="text-center">Emily Davis</td>
-            <td class="text-center">Marketing</td>
-            <td class="text-center">Marketing</td>
-            <td class="text-center">Enrolled</td>
-            <td class="text-center">Not Enrolled</td>
-            <td class="text-center">Enrolled</td>
-            <td class="status-pending text-center">Pending</td>
-          </tr>
+          <?php
+              displayEligibles($connection);
+          ?>
         </tbody>
       </table>
       <!-- End of Table -->
 
       <!-- Small screen mode -->
       <section>
-        <!-- John Smith -->
-        <div
-          class="m-5 mx-auto max-w-sm rounded-lg bg-white bg-gradient-to-r p-8 md:hidden"
-        >
-          <h2 class="mb-4 text-center text-2xl font-bold text-gray-800">
-            0001
-          </h2>
-          <p class="mb-2 text-center text-xl font-bold text-gray-800">
-            John Smith
-          </p>
-          <p class="mb-2 text-center text-xl font-bold text-gray-800">
-            Department
-          </p>
-          <p class="mb-2 text-center text-base text-gray-800">
-            Sales Department
-          </p>
-          <p class="mb-2 text-center text-base text-gray-800">Sales Manager</p>
-          <p class="mb-2 text-center text-xl font-bold text-gray-800">
-            Currently Enrolled
-          </p>
-          <p class="mb-2 text-center text-base text-gray-800">
-            Health Insurance
-          </p>
-          <p class="mb-2 text-center text-base text-gray-800">
-            Retirement Plan
-          </p>
-          <p class="status-approved mb-2 text-center text-xl font-bold">
-            Active
-          </p>
-        </div>
-
-        <!-- Sarah Johnson -->
-        <div
-          class="m-5 mx-auto max-w-sm rounded-lg bg-white bg-gradient-to-r p-8 md:hidden"
-        >
-          <h2 class="mb-4 text-center text-2xl font-bold text-gray-800">
-            0002
-          </h2>
-          <p class="mb-2 text-center text-xl font-bold text-gray-800">
-            Sarah Johnson
-          </p>
-          <p class="mb-2 text-center text-xl font-bold text-gray-800">
-            Department
-          </p>
-          <p class="mb-2 text-center text-base text-gray-800">
-            Human Resource Department
-          </p>
-          <p class="mb-2 text-center text-base text-gray-800">
-            Human Resource Specialist
-          </p>
-          <p class="mb-2 text-center text-xl font-bold text-gray-800">
-            Currently Enrolled
-          </p>
-          <p class="mb-2 text-center text-base text-gray-800">
-            Health Insurance
-          </p>
-          <p class="mb-2 text-center text-base text-gray-800">
-            Dental Insurance
-          </p>
-          <p class="status-approved mb-2 text-center text-xl font-bold">
-            Active
-          </p>
-        </div>
-
-        <!-- Michael Brown -->
-        <div
-          class="m-5 mx-auto max-w-sm rounded-lg bg-white bg-gradient-to-r p-8 md:hidden"
-        >
-          <h2 class="mb-4 text-center text-2xl font-bold text-gray-800">
-            0003
-          </h2>
-          <p class="mb-2 text-center text-xl font-bold text-gray-800">
-            Michael Brown
-          </p>
-          <p class="mb-2 text-center text-xl font-bold text-gray-800">
-            Department
-          </p>
-          <p class="mb-2 text-center text-base text-gray-800">Finance</p>
-          <p class="mb-2 text-center text-base text-gray-800">
-            Finance Accountant
-          </p>
-          <p class="mb-2 text-center text-xl font-bold text-gray-800">
-            Currently Enrolled
-          </p>
-          <p class="mb-2 text-center text-base text-gray-800">
-            Dental Insurance
-          </p>
-          <p class="mb-2 text-center text-base text-gray-800">
-            Retirement Plan
-          </p>
-          <p class="status-approved mb-2 text-center text-xl font-bold">
-            Active
-          </p>
-        </div>
-
-        <!-- Sarah Johnson -->
-        <div
-          class="m-5 mx-auto max-w-sm rounded-lg bg-white bg-gradient-to-r p-8 md:hidden"
-        >
-          <h2 class="mb-4 text-center text-2xl font-bold text-gray-800">004</h2>
-          <p class="mb-2 text-center text-xl font-bold text-gray-800">
-            Emily Davis
-          </p>
-          <p class="mb-2 text-center text-xl font-bold text-gray-800">
-            Department
-          </p>
-          <p class="mb-2 text-center text-base text-gray-800">Marketing</p>
-          <p class="mb-2 text-center text-base text-gray-800">Marketing</p>
-          <p class="mb-2 text-center text-xl font-bold text-gray-800">
-            Enrolled in
-          </p>
-          <p class="mb-2 text-center text-base text-gray-800">
-            Health Insurance
-          </p>
-          <p class="mb-2 text-center text-base text-gray-800">
-            Retirement Plan
-          </p>
-          <p class="status-pending mb-2 text-center text-xl font-bold">
-            Pending
-          </p>
-        </div>
+        <?php
+          displayEligibles_smallscreen($connection);
+        ?>
       </section>
     </main>
     <!-- End of Contents -->

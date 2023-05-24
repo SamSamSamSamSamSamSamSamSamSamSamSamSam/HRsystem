@@ -92,35 +92,40 @@
         </li>
       </ul>
 
-      <form action="../../../php/includes/employee.inc.php" method="post">  
+      <!--form action="../../../php/includes/employee.inc.php" method="post"-->  
       <?php include_once '../../../php/sidebar-and-search.php'; ?>
 
     <!-- Content -->
     <main>
-      <form action="submit_plan_setup.php" method="post" id="plan_setup_form">
+      <form action="../../../php/includes/setup_plans.inc.php" method="post" id="plan_setup_form">
         <label for="plan_name">Plan Name</label>
-        <input type="text" id="plan_name" name="plan_name" />
+        <input type="text" id="plan_name" name="plan_name" required/>
 
         <label for="plan_type">Plan Type</label>
         <select id="plan_type" name="plan_type">
-          <option value="health_insurance">Health</option>
-          <option value="dental_insurance">Dental</option>
-          <option value="vision_insurance">Vision</option>
-          <option value="life_insurance">Life</option>
-          <option value="disability_insurance">Disability</option>
-          <option value="retirement_plan">Retirement Plan</option>
+          <option value="Health Insurance">Health Insurance</option>
+          <option value="Retirement">Retirement</option>
+          <option value="Life Insurance">Life Insurance</option>
+          <option value="Disability Insurance">Disability Insurance</option>
+          <option value="Dental and Vision Insurance">Dental and Vision Insurance</option>
+          <option value="Paid Time Off (PTO)">Paid Time Off (PTO)</option>
+          <option value="Employee Assistance Programs">Employee Assistance Programs</option>
+          <option value="Wellness Programs">Wellness Programs</option>
         </select>
 
         <label for="coverage_level">Coverage Level</label>
-        <input type="text" id="coverage_level" name="coverage_level" />
+        <input type="text" id="coverage_level" name="coverage_level" required/>
 
         <label for="deductible">Deductible</label>
-        <input type="text" id="deductible" name="deductible" />
+        <input type="text" id="deductible" name="deductible" required placeholder="Amount..."/>
 
         <label for="premium">Premium</label>
-        <input type="text" id="premium" name="premium" />
+        <select id="premium" name="premium">
+          <option value="0">STANDARD</option>
+          <option value="1">EXCLUSIVE</option>
+        </select>
 
-        <input type="submit" value="Submit" />
+        <input type="submit" name="submit" value="submit" />
       </form>
     </main>
     <!-- End of Content -->
