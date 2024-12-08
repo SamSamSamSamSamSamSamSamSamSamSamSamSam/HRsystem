@@ -92,6 +92,29 @@
       </ul>
       <form action="../../php/includes/employee.inc.php" method="post">        
         <?php include_once '../../php/sidebar-and-search.php'; ?>
+    
+    <!-- Compose Email Button -->
+    <button class="compose-btn" onclick="openComposeEmail()"><i class="fas fa-pen"></i> Compose</button>
+
+    <!-- Modal for Composing Email -->
+    <div id="emailModal" class="email-modal">
+      <div class="email-modal-content">
+        <span class="close" onclick="closeEmailModal()">&times;</span>
+        <h2>Compose Email</h2>
+        <form action="send_email.php" method="POST" id="emailForm">
+          <label for="to">Recipient:</label>
+          <input type="email" id="to" name="to" required />
+
+          <label for="subject">Subject:</label>
+          <input type="text" id="subject" name="subject" required />
+
+          <label for="body">Message:</label>
+          <textarea id="body" name="body" rows="6" required></textarea>
+
+          <button type="submit">Send Email</button>
+        </form>
+      </div>
+    </div>
 
     <!-- Content -->
     <header>
@@ -101,9 +124,34 @@
     </header>
     <!-- End of Content -->
 
+    
+
     <?php include_once '../../php/footer.php'; ?>
 
     <!-- JavaScript -->
+    <!-- Compose Email Tab -->
+    <script>
+      /*function openComposeEmail() {
+        window.open('compose_email.php', '_blank', 'width=600,height=600');
+      }*/
+      // Open Compose Email Modal
+      function openComposeEmail() {
+        document.getElementById('emailModal').style.display = 'block';
+      }
+
+      // Close Compose Email Modal
+      function closeEmailModal() {
+        document.getElementById('emailModal').style.display = 'none';
+      }
+
+      // Close the modal if clicked outside of the modal content
+      window.onclick = function(event) {
+        if (event.target == document.getElementById('emailModal')) {
+          closeEmailModal();
+        }
+      };
+    </script>
+
     <script src="index.js"></script>
     <script src="/build/js/bars.js"></script>
   </body>
